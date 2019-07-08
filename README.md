@@ -1,0 +1,2 @@
+# Oracle2XML2Mysql
+从oracle获取图纸表ID字段,去Mysql三个表里查,把信息汇总后,制作成XML文件,并把路径写回Oracle图纸表的对应元组
