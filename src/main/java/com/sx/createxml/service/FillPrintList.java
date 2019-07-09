@@ -1,14 +1,10 @@
 package com.sx.createxml.service;
 
-import com.sx.createxml.dao.repository.MajorDetailRepository;
-import com.sx.createxml.dao.repository.MajorPlanningRepository;
-import com.sx.createxml.dao.repository.ProjectApplyRepository;
-import com.sx.createxml.dao.repository.SubProjectDetailRepository;
+import com.sx.createxml.dao.repository.*;
+//import com.sx.createxml.dao.repository2.DtDocumentInfoRepository;
 import com.sx.createxml.pojo.XMLDataStruct.*;
-import com.sx.createxml.pojo.mysql.MajorDetail;
-import com.sx.createxml.pojo.mysql.MajorPlanning;
-import com.sx.createxml.pojo.mysql.ProjectApply;
-import com.sx.createxml.pojo.mysql.SubProjectDetail;
+import com.sx.createxml.pojo.mysql.*;
+import com.sx.createxml.pojo.oracle.DtDocumentInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -20,8 +16,9 @@ import java.util.List;
  * @date 19/7/8/008 18:51
  */
 @Service
-public class SearchThreeTable {
-
+public class FillPrintList {
+    @Autowired
+    MetaItemRepository metaItemRepository;
     @Autowired
     MajorPlanningRepository majorPlanningRepository;
     @Autowired
@@ -30,17 +27,23 @@ public class SearchThreeTable {
     ProjectApplyRepository projectApplyRepository;
     @Autowired
     SubProjectDetailRepository subProjectDetailRepository;
+//    @Autowired
+//    DtDocumentInfoRepository dtDocumentInfoRepository;
 
 
     public ArrayList<Print4XML> createPrint4XMLList() {
+        //构造所有print的数组
         ArrayList<Print4XML> prints = new ArrayList<>();
-
-        int[] printIds = OraclePrintIDs.printIds;
-
-        for (int i = 0; i < printIds.length; i++) {
+        List<Integer> printIds = new ArrayList<>();
+//        List<DtDocumentInfo> all = dtDocumentInfoRepository.findAll();
+//        all.forEach(dtDocumentInfo -> {
+//            printIds.add(Integer.parseInt(dtDocumentInfo.getMainid()));
+//        });
+        //对print数组进行遍历,然后返回一个printList供生成xml的函数调用
+        for (int i = 0; i < printIds.size(); i++) {
 
             //对每一个oracle中的图纸id都从mysql三个表里找数剧
-            Integer idInt = printIds[i];
+            Integer idInt = printIds.get(i);
             Long idL = Long.parseLong(idInt.toString());
 
             //把数据填入print4XML,用于生成XML
@@ -65,7 +68,10 @@ public class SearchThreeTable {
             List<SubProjectDetail> byProjectId = subProjectDetailRepository.findByProjectId(subProjectId);
             SubProjectDetail subProjectDetail = byProjectId.get(0);
 
-            print4XML.fillMetaItems(majorPlanning, majorDetail, subProjectDetail, projectApply);
+
+            List<MetaItem> all1 = metaItemRepository.findAll();
+            print4XML.fillMetaItems(majorPlanning, majorDetail, subProjectDetail, projectApply,all1
+                    );
 
 
             //把填好的print放进prints(list)

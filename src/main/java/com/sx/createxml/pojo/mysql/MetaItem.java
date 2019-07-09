@@ -1,10 +1,20 @@
 package com.sx.createxml.pojo.mysql;
 
+import javax.annotation.Generated;
+import javax.naming.Name;
+import javax.persistence.*;
+
 /**
  * @author sunxu93@163.com
  * @date 19/7/9/009 16:40
  */
+@Entity
+@Table(name = "meta_item")
 public class MetaItem {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private int id;
     private String name;
     private String key;
     private String type;
@@ -18,6 +28,13 @@ public class MetaItem {
     private String range;
     private String notation;
 
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
     public String getLength() {
         return length;
     }

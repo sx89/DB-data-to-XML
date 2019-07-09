@@ -12,9 +12,9 @@ import java.util.ArrayList;
  * @date 19/7/9/009 13:16
  */
 @Service
-public class CreateXMLFromOracle {
+public class Oracle2XML2Oracle {
     public Object createXMLFromOracle() {
-        ArrayList<Print4XML> print4XMLList = new SearchThreeTable().createPrint4XMLList();
+        ArrayList<Print4XML> print4XMLList = new FillPrintList().createPrint4XMLList();
         ArrayList<CreateXMLResult> xmlByDOM = Class2XML.createXMLByDOM(null, print4XMLList);
 
         //TODO  通过xmlByBom把图纸地址写回oracle

@@ -14,17 +14,15 @@ import java.util.List;
 public class Print4XML {
 
 
-    @Autowired
-    MetaItemRepository metaItemRepository;
 
     private  Integer printId;
     private ArrayList<MetaItem> items;
 
     public List<MetaItem>fillMetaItems(MajorPlanning majorPlanning, MajorDetail majorDetail,
                                             SubProjectDetail subProjectDetail,
-                                            ProjectApply projectApply) {
+                                            ProjectApply projectApply,List<MetaItem> items) {
 
-        List<MetaItem> items = metaItemRepository.findAll();
+
 
         //TODO 给items的value们赋值
         return items;

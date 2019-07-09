@@ -1,8 +1,7 @@
 package com.sx.createxml.controller;
 
-import com.sx.createxml.service.CreateXMLFromOracle;
+import com.sx.createxml.service.Oracle2XML2Oracle;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -12,9 +11,9 @@ import org.springframework.web.bind.annotation.RestController;
  * @date 19/7/9/009 10:27
  */
 @RestController
-public class HelloWorld {
+public class Oracle2XML2OracleController {
     @Autowired
-    CreateXMLFromOracle createXMLFromOracle;
+    Oracle2XML2Oracle oracle2XML2Oracle;
 
     @RequestMapping("/hello")
     @ResponseBody
@@ -26,7 +25,7 @@ public class HelloWorld {
     @RequestMapping("createxml")
     @ResponseBody
     public Object createXML() {
-        createXMLFromOracle.createXMLFromOracle();
+        oracle2XML2Oracle.createXMLFromOracle();
         return null;
     }
 }
