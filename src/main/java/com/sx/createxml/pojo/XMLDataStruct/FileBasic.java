@@ -1,5 +1,10 @@
 package com.sx.createxml.pojo.XMLDataStruct;
 
+import com.sx.createxml.pojo.MajorDetail;
+import com.sx.createxml.pojo.MajorPlanning;
+import com.sx.createxml.pojo.ProjectApply;
+import com.sx.createxml.pojo.SubProjectDetail;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -34,5 +39,19 @@ public class FileBasic {
 
     public void setHashMap(HashMap<String, Object> hashMap) {
         this.hashMap = hashMap;
+    }
+
+    public HashMap<String,Object> fillFileBasic(MajorPlanning majorPlanning, MajorDetail majorDetail,
+                                 SubProjectDetail subProjectDetail, ProjectApply projectApply) {
+
+        hashMap.put(listFileBasic[0], "文件级");
+        hashMap.put(listFileBasic[1], "载体");
+        hashMap.put(listFileBasic[2], "M");
+        hashMap.put(listFileBasic[3], null);
+        hashMap.put(listFileBasic[4], "文件后缀，一般是pdf");
+        hashMap.put(listFileBasic[5], null);
+        hashMap.put(listFileBasic[6], "pdf reader");
+        hashMap.put(listFileBasic[7], null);
+        return hashMap;
     }
 }

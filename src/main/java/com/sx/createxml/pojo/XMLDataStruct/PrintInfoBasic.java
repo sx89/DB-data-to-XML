@@ -1,5 +1,10 @@
 package com.sx.createxml.pojo.XMLDataStruct;
 
+import com.sx.createxml.pojo.MajorDetail;
+import com.sx.createxml.pojo.MajorPlanning;
+import com.sx.createxml.pojo.ProjectApply;
+import com.sx.createxml.pojo.SubProjectDetail;
+
 import java.util.HashMap;
 
 /**
@@ -62,5 +67,12 @@ public class PrintInfoBasic {
 
     public void setHashMap(HashMap<String, Object> hashMap) {
         this.hashMap = hashMap;
+    }
+    //TODO 类似com.sx.createxml.pojo.XMLDataStruct.FileBasic 的fillhashmap填充hashmap
+    public HashMap<String,Object> fillFileBasic(MajorPlanning majorPlanning, MajorDetail majorDetail,
+                                                SubProjectDetail subProjectDetail, ProjectApply projectApply) {
+
+
+        return hashMap;
     }
 }
