@@ -7,6 +7,7 @@ package com.sx.createxml.pojo.XMLDataStruct;
 public class Print4XML {
     public static final String[] listPrint4XML = {"文件基本信息元数据", "业务基本信息元数据",
             "图纸信息元数据","过程行为元数据"};
+    private Integer printId ;
 
     private FileBasic fileBasic;
     private String fileBasicName = listPrint4XML[0];
@@ -86,6 +87,15 @@ public class Print4XML {
     }
 
     public void setProcessBasicName(String processBasicName) {
+
         this.processBasicName = processBasicName;
+    }
+
+    public Integer getPrintId() {
+        return printId;
+    }
+
+    public void setPrintId(Integer printId) {
+        this.printId = printId;
     }
 }
