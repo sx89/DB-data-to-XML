@@ -20,9 +20,9 @@ import java.util.List;
  * @author sunxu93@163.com
  * @date 19/7/8/008 16:42
  */
-public class CLass2XML {
+public class Class2XML {
     //TODO  把模板修改成拿到printLIst,写出标准的xml文件,以print.getName命名xml,并把xml的路径返回
-    public ArrayList<CreateXMLResult> createXMLByDOM(File dest, List<Print4XML> prints) {
+    public static ArrayList<CreateXMLResult> createXMLByDOM(File dest, List<Print4XML> prints) {
         // 创建DocumentBuilderFactory
 
         DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
