@@ -14,7 +14,7 @@ import java.util.HashMap;
 public class ServiceBasic {
     private String name = "业务基本信息元数据";
 
-    public static final String[] listFileBasic = {"设计资质",
+    public static final String[] listServiceBasic = {"设计资质",
             "子项编号",
             "专业编号",
             "归档专业",
@@ -40,8 +40,8 @@ public class ServiceBasic {
         this.name = name;
     }
 
-    public static String[] getListFileBasic() {
-        return listFileBasic;
+    public static String[] getListServiceBasic() {
+        return listServiceBasic;
     }
 
     public HashMap<String, Object> getHashMap() {

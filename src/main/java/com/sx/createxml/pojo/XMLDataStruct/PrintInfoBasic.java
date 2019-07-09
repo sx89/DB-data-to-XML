@@ -4,6 +4,7 @@ import com.sx.createxml.pojo.MajorDetail;
 import com.sx.createxml.pojo.MajorPlanning;
 import com.sx.createxml.pojo.ProjectApply;
 import com.sx.createxml.pojo.SubProjectDetail;
+import org.springframework.data.web.HateoasPageableHandlerMethodArgumentResolver;
 
 import java.util.HashMap;
 
@@ -14,7 +15,7 @@ import java.util.HashMap;
 public class PrintInfoBasic {
     private String name = "图纸信息元数据";
 
-    public static final String[] listFileBasic = {
+    public static final String[] listPrintInfoBasic = {
             "工程编号",
             "工程名称",
             "子项名称",
@@ -57,8 +58,8 @@ public class PrintInfoBasic {
         this.name = name;
     }
 
-    public static String[] getListFileBasic() {
-        return listFileBasic;
+    public static String[] getListPrintInfoBasic() {
+        return listPrintInfoBasic;
     }
 
     public HashMap<String, Object> getHashMap() {
@@ -72,7 +73,8 @@ public class PrintInfoBasic {
     public HashMap<String,Object> fillFileBasic(MajorPlanning majorPlanning, MajorDetail majorDetail,
                                                 SubProjectDetail subProjectDetail, ProjectApply projectApply) {
 
-
+        hashMap.put(listPrintInfoBasic[0], null);
+        hashMap.put(listPrintInfoBasic[1], majorPlanning.getSubProjectId());
         return hashMap;
     }
 }

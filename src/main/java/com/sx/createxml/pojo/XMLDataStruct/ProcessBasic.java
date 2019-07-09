@@ -14,7 +14,7 @@ import java.util.HashMap;
 public class ProcessBasic {
     private String name = "过程行为元数据";
 
-    public static final String[] listFileBasic = {
+    public static final String[] listProcessBasic = {
             "行为事件类型",
             "行为责任人职责",
             "行为责任者",
@@ -39,8 +39,8 @@ public class ProcessBasic {
         this.name = name;
     }
 
-    public static String[] getListFileBasic() {
-        return listFileBasic;
+    public static String[] getListProcessBasic() {
+        return listProcessBasic;
     }
 
     public HashMap<String, Object> getHashMap() {
