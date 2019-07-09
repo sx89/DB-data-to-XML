@@ -1,6 +1,7 @@
 package com.sx.createxml.util;
 
 import com.sx.createxml.pojo.CreateXMLResult;
+import com.sx.createxml.pojo.XMLDataStruct.FileBasic;
 import com.sx.createxml.pojo.XMLDataStruct.Print4XML;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
@@ -13,6 +14,7 @@ import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
 import java.io.File;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 /**
  * @author sunxu93@163.com
@@ -22,6 +24,15 @@ public class CLass2XML {
     //TODO  把模板修改成拿到printLIst,写出标准的xml文件,以print.getName命名xml,并把xml的路径返回
     public ArrayList<CreateXMLResult> createXMLByDOM(File dest, List<Print4XML> prints) {
         // 创建DocumentBuilderFactory
+        Print4XML print4XML = prints.get(0);
+        FileBasic fileBasic = print4XML.getFileBasic();
+
+        String[] listFileBasic = fileBasic.getListFileBasic();
+
+        HashMap<String, Object> hashMap = fileBasic.getHashMap();
+
+        String s = listFileBasic[0];
+        hashMap.get(s);
 
         DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
         try {

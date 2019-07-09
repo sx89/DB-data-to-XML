@@ -1,4 +1,4 @@
-package com.sx.createxml.dao;
+package com.sx.createxml.dao.repository2;
 
 /**
  * @author sunxu93@163.com
