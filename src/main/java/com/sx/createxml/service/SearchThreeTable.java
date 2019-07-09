@@ -4,13 +4,15 @@ import com.sx.createxml.dao.repository.MajorDetailRepository;
 import com.sx.createxml.dao.repository.MajorPlanningRepository;
 import com.sx.createxml.dao.repository.ProjectApplyRepository;
 import com.sx.createxml.dao.repository.SubProjectDetailRepository;
-import com.sx.createxml.pojo.*;
 import com.sx.createxml.pojo.XMLDataStruct.*;
+import com.sx.createxml.pojo.mysql.MajorDetail;
+import com.sx.createxml.pojo.mysql.MajorPlanning;
+import com.sx.createxml.pojo.mysql.ProjectApply;
+import com.sx.createxml.pojo.mysql.SubProjectDetail;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 
 /**
@@ -33,8 +35,7 @@ public class SearchThreeTable {
     public ArrayList<Print4XML> createPrint4XMLList() {
         ArrayList<Print4XML> prints = new ArrayList<>();
 
-        OraclePrintID oraclePrintID = new OraclePrintID();
-        int[] printIds = oraclePrintID.getPrintIds();
+        int[] printIds = OraclePrintIDs.printIds;
 
         for (int i = 0; i < printIds.length; i++) {
 
@@ -43,7 +44,6 @@ public class SearchThreeTable {
             Long idL = Long.parseLong(idInt.toString());
 
             //把数据填入print4XML,用于生成XML
-
             Print4XML print4XML = new Print4XML();
             print4XML.setPrintId(idInt);
 
@@ -65,23 +65,8 @@ public class SearchThreeTable {
             List<SubProjectDetail> byProjectId = subProjectDetailRepository.findByProjectId(subProjectId);
             SubProjectDetail subProjectDetail = byProjectId.get(0);
 
+            print4XML.fillMetaItems(majorPlanning, majorDetail, subProjectDetail, projectApply);
 
-            //填文件基本元数据
-            FileBasic fileBasic = print4XML.getFileBasic();
-
-            fileBasic.fillFileBasic(majorPlanning, majorDetail, subProjectDetail, projectApply);
-
-            //填业务基本元数据
-            ServiceBasic serviceBasic = print4XML.getServiceBasic();
-
-            serviceBasic.fillFileBasic(majorPlanning, majorDetail, subProjectDetail, projectApply);
-
-            //填写图纸信息元数据
-            PrintInfoBasic printInfoBasic = print4XML.getPrintInfoBasic();
-            printInfoBasic.fillFileBasic(majorPlanning, majorDetail, subProjectDetail, projectApply);
-            //填写行为元数据
-            ProcessBasic processBasic = print4XML.getProcessBasic();
-            processBasic.fillFileBasic(majorPlanning, majorDetail, subProjectDetail, projectApply);
 
             //把填好的print放进prints(list)
             prints.add(print4XML);

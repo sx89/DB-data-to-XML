@@ -1,4 +1,4 @@
-package com.sx.createxml.pojo2;
+package com.sx.createxml.pojo.oracle;
 
 /**
  * @author sunxu93@163.com

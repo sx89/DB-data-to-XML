@@ -1,4 +1,4 @@
-package com.sx.createxml.pojo2;
+package com.sx.createxml.pojo.oracle;
 
 import com.alibaba.fastjson.annotation.JSONField;
 import org.springframework.format.annotation.DateTimeFormat;
