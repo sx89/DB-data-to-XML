@@ -5,6 +5,9 @@ import com.sx.createxml.dao.repository.MajorPlanningRepository;
 import com.sx.createxml.dao.repository.ProjectApplyRepository;
 import com.sx.createxml.dao.repository.SubProjectDetailRepository;
 import com.sx.createxml.pojo.*;
+import com.sx.createxml.pojo.XMLDataStruct.FileBasic;
+import com.sx.createxml.pojo.XMLDataStruct.Print4XML;
+import com.sx.createxml.pojo.XMLDataStruct.ServiceBasic;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -43,9 +46,9 @@ public class SearchThreeTable {
             List<SubProjectDetail> byProjectId = subProjectDetailRepository.findByProjectId(idL);
             SubProjectDetail subProjectDetail = byProjectId.get(0);
 
-            Print print = new Print();
-            FileBasic fileBasic = print.getFileBasic();
-            ServiceBasic serviceBasic = print.getServiceBasic();
+            Print4XML print4XML = new Print4XML();
+            FileBasic fileBasic = print4XML.getFileBasic();
+            ServiceBasic serviceBasic = print4XML.getServiceBasic();
 
             HashMap<String, Object> hashMap = fileBasic.getHashMap();
             String[] listFileBasic = fileBasic.getListFileBasic();

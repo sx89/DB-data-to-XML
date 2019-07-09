@@ -15,6 +15,7 @@ import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
 
+import com.sx.createxml.pojo.XMLDataStruct.Print4XML;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 /**
@@ -22,8 +23,8 @@ import org.w3c.dom.Element;
  * @date 19/7/8/008 16:42
  */
 public class CLass2XML {
-        //TODO  把模板修改成拿到printLIst,写出标准的xml文件,以print.getName命名,并把xml的路径返回
-        public void createXMLByDOM(File dest, List<Map<String,List<Map<String,String>>>> list) {
+        //TODO  把模板修改成拿到printLIst,写出标准的xml文件,以print.getName命名xml,并把xml的路径返回
+        public void createXMLByDOM(File dest, List<Print4XML> prints) {
             // 创建DocumentBuilderFactory
 
             DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
