@@ -1,6 +1,6 @@
 package com.sx.createxml.dao.repository;
 
-import com.sx.createxml.pojo.MajorPlanning;
+import com.sx.createxml.pojo.mysql.MajorPlanning;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;

@@ -1,11 +1,11 @@
-package com.sx.createxml.pojo;
+package com.sx.createxml.pojo.XMLDataStruct;
 
 /**
  * @author sunxu93@163.com
  * @date 19/7/8/008 18:48
  */
-public class OraclePrintID {
-    private  int[] printIds ={2061,	2062,	2063,	2064,	2065,	2066,	2067,	2068,	2069,	2070,
+public class OraclePrintIDs {
+    public static   int[] printIds ={2061,	2062,	2063,	2064,	2065,	2066,	2067,	2068,	2069,	2070,
         2071,	2072,	2073,	2074,	2075,	2076,	2077,	2078,	2079,	2080,	2081,	2082,	2083,	2084,
             2085,	2086,	2087,	2088,	2089,	2090,	2091,	2092,	2093,	2094,	2095,	2096,	2097,
             2098,	2099,	2100,	2101,	2102,	2103,	2104,	2105,	2106,	2107,	2108,	2109,	2110,
@@ -18,10 +18,4 @@ public class OraclePrintID {
             2426,	2427,	2428,	2429,	2430,	2431,	2432,	2433,	2434,	2435,	2436,	2437,	2438,
             2439,	2440};
 
-    public OraclePrintID() {
-    }
-
-    public int[] getPrintIds() {
-        return printIds;
-    }
 }

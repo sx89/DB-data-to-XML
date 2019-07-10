@@ -1,6 +1,6 @@
 package com.sx.createxml.dao.repository;
 
-import com.sx.createxml.pojo.SubProjectDetail;
+import com.sx.createxml.pojo.mysql.SubProjectDetail;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;

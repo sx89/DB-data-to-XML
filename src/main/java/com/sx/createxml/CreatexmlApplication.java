@@ -9,6 +9,5 @@ public class CreatexmlApplication {
     public static void main(String[] args) {
         SpringApplication.run(CreatexmlApplication.class, args);
     }
-//mysql建四个表
-    //从oracle
+    // TODO ojbc是否可用111
 }

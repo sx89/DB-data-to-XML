@@ -22,7 +22,7 @@ import java.util.Map;
         entityManagerFactoryRef = "secondaryEntityManagerFactory",
         transactionManagerRef = "secondaryTransactionManager",
         basePackages = {
-                "com.dling.teamcore.core.repository2"
+                "com.sx.createxml.dao.repository2"
         }
 )
 public class SecondaryConfig {
@@ -74,7 +74,7 @@ public class SecondaryConfig {
         return
                 builder
                         .dataSource(secondaryDataSource)
-                        .packages("com.dling.teamcore.common.model2")
+                        .packages("com.sx.createxml.pojo.oracle")
                         .properties(getVendorProperties())
                         .persistenceUnit("db2")
                         .build();

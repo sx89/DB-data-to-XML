@@ -1,6 +1,6 @@
 package com.sx.createxml.dao.repository;
 
-import com.sx.createxml.pojo.MajorDetail;
+import com.sx.createxml.pojo.mysql.MajorDetail;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;

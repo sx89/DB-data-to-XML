@@ -1,4 +1,4 @@
-package com.sx.createxml.pojo;
+package com.sx.createxml.pojo.mysql;
 
 import com.alibaba.fastjson.annotation.JSONField;
 import org.springframework.format.annotation.DateTimeFormat;
