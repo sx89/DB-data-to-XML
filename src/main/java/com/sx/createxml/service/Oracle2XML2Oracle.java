@@ -1,6 +1,7 @@
 package com.sx.createxml.service;
 
 import com.sx.createxml.dao.repository.*;
+import com.sx.createxml.dao.repository2.DtDocumentInfoRepository;
 import com.sx.createxml.pojo.CreateXMLResult;
 import com.sx.createxml.pojo.XMLDataStruct.Print4XML;
 import com.sx.createxml.util.Class2XML;
@@ -27,6 +28,8 @@ public class Oracle2XML2Oracle {
     SubProjectDetailRepository subProjectDetailRepository;
     @Autowired
     FillPrintList fillPrintList;
+    @Autowired
+    DtDocumentInfoRepository dtDocumentInfoRepository;
     public Object createXMLFromOracle() {
 
 
@@ -34,6 +37,7 @@ public class Oracle2XML2Oracle {
         ArrayList<Print4XML> print4XMLList = fillPrintList.createPrint4XMLList();
         ArrayList<CreateXMLResult> xmlByDOM = Class2XML.createXMLByDOM(destFolerPath,print4XMLList);
 
+        dtDocumentInfoRepository.updateMetaFileByMainid("lalala","2070");
         //TODO  通过xmlByBom把图纸地址写回oracle
         return null;
     }
