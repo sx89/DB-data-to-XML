@@ -1,15 +1,16 @@
 package com.sx.createxml.service;
 
 import com.sx.createxml.dao.repository.*;
-//import com.sx.createxml.dao.repository2.DtDocumentInfoRepository;
-import com.sx.createxml.pojo.XMLDataStruct.*;
+import com.sx.createxml.pojo.XMLDataStruct.OraclePrintIDs;
+import com.sx.createxml.pojo.XMLDataStruct.Print4XML;
 import com.sx.createxml.pojo.mysql.*;
-import com.sx.createxml.pojo.oracle.DtDocumentInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+
+//import com.sx.createxml.dao.repository2.DtDocumentInfoRepository;
 
 /**
  * @author sunxu93@163.com
@@ -59,20 +60,16 @@ public class FillPrintList {
 
 
             //从majorDetail表找数据
-            List<MajorDetail> allByProjectId = majorDetailRepository.findAllByProjectId(majorId);
-            MajorDetail majorDetail = allByProjectId.get(0);
+            MajorDetail majorDetail = majorDetailRepository.getById(majorId);
 
             //从projectApply表找数据
             ProjectApply projectApply = projectApplyRepository.getById(projectId);
 
             //从subProjectDetail表找数据
-            List<SubProjectDetail> byProjectId = subProjectDetailRepository.findByProjectId(subProjectId);
-            SubProjectDetail subProjectDetail = byProjectId.get(0);
-
+            SubProjectDetail subProjectDetail = subProjectDetailRepository.getById(subProjectId);
 
             List<MetaItem> all1 = metaItemRepository.findAll();
-            print4XML.fillMetaItems(majorPlanning, majorDetail, subProjectDetail, projectApply,all1
-                    );
+            print4XML.fillMetaItems(majorPlanning, majorDetail, subProjectDetail, projectApply, all1);
 
 
             //把填好的print放进prints(list)

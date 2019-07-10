@@ -16,16 +16,15 @@ public class Print4XML {
 
 
     private  Integer printId;
-    private ArrayList<MetaItem> items;
+    private List<MetaItem> items;
 
     public List<MetaItem>fillMetaItems(MajorPlanning majorPlanning, MajorDetail majorDetail,
                                             SubProjectDetail subProjectDetail,
                                             ProjectApply projectApply,List<MetaItem> items) {
-
-
+        this.items =items;
 
         //TODO 给items的value们赋值
-        return items;
+        return this.items;
 
     }
     public Print4XML() {
@@ -33,8 +32,8 @@ public class Print4XML {
     }
 
 
-    public ArrayList<MetaItem> getItems() {
-        return items;
+    public List<MetaItem> getItems() {
+        return this.items;
     }
 
     public void setItems(ArrayList<MetaItem> items) {

@@ -14,7 +14,7 @@ public class MetaItem {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private int id;
+    private Integer id;
     private String name;
     private String key;
     private String type;

@@ -9,8 +9,10 @@ import java.util.List;
  * @author sunxu93@163.com
  * @date 19/7/9/009 17:10
  */
-public interface MetaItemRepository extends JpaRepository<MetaItem, Long> {
+public interface MetaItemRepository extends JpaRepository<MetaItem, Integer> {
     @Override
     List<MetaItem> findAll() ;
+
+   MetaItem getById(Integer id);
 
 }
