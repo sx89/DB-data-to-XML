@@ -1,16 +1,17 @@
 package com.sx.createxml.service;
 
 import com.sx.createxml.dao.repository.*;
+import com.sx.createxml.dao.repository2.DtDocumentInfoRepository;
 import com.sx.createxml.pojo.XMLDataStruct.OraclePrintIDs;
 import com.sx.createxml.pojo.XMLDataStruct.Print4XML;
 import com.sx.createxml.pojo.mysql.*;
+import com.sx.createxml.pojo.oracle.DtDocumentInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
 
-//import com.sx.createxml.dao.repository2.DtDocumentInfoRepository;
 
 /**
  * @author sunxu93@163.com
@@ -28,24 +29,25 @@ public class FillPrintList {
     ProjectApplyRepository projectApplyRepository;
     @Autowired
     SubProjectDetailRepository subProjectDetailRepository;
-//    @Autowired
-//    DtDocumentInfoRepository dtDocumentInfoRepository;
+    @Autowired
+    DtDocumentInfoRepository dtDocumentInfoRepository;
 
 
     public ArrayList<Print4XML> createPrint4XMLList() {
         //构造所有print的数组
+
         ArrayList<Print4XML> prints = new ArrayList<>();
-//        List<Integer> printIds = new ArrayList<>();
-            int[] printIds =OraclePrintIDs.printIds;
-//        List<DtDocumentInfo> all = dtDocumentInfoRepository.findAll();
-//        all.forEach(dtDocumentInfo -> {
-//            printIds.add(Integer.parseInt(dtDocumentInfo.getMainid()));
-//        });
+        List<Integer> printIds = new ArrayList<>();
+//            int[] printIds =OraclePrintIDs.printIds;
+        List<DtDocumentInfo> all = dtDocumentInfoRepository.findAll();
+        all.forEach(dtDocumentInfo -> {
+            printIds.add(Integer.parseInt(dtDocumentInfo.getMainid()));
+        });
         //对print数组进行遍历,然后返回一个printList供生成xml的函数调用
-        for (int i = 0; i < printIds.length; i++) {
+        for (int i = 0; i < printIds.size(); i++) {
 
             //对每一个oracle中的图纸id都从mysql三个表里找数剧
-            Integer idInt = printIds[i];
+            Integer idInt = printIds.get(i);
             Long idL = Long.parseLong(idInt.toString());
 
             //把数据填入print4XML,用于生成XML
