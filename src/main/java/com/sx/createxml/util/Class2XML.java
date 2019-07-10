@@ -24,72 +24,121 @@ public class Class2XML {
     //TODO  把模板修改成拿到printLIst,写出标准的xml文件,以print.getName命名xml,并把xml的路径返回
     public static ArrayList<CreateXMLResult> createXMLByDOM(File dest, List<Print4XML> prints) {
         // 创建DocumentBuilderFactory
+        for (int j = 0; j < prints.size(); j++) {
+            Print4XML print4XML = prints.get(j);
+            List<MetaItem> Items = print4XML.getItems();
 
-        DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
-        try {
+            DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
+            try {
 
-            // 创建DocumentBuilder
-            DocumentBuilder builder = factory.newDocumentBuilder();
+                // 创建DocumentBuilder
+                DocumentBuilder builder = factory.newDocumentBuilder();
 
-            // 创建Document
-            Document document = builder.newDocument();
+                // 创建Document
+                Document document = builder.newDocument();
 
-            // 设置XML声明中standalone为yes，即没有dtd和schema作为该XML的说明文档，且不显示该属性
-            // document.setXmlStandalone(true);
+                // 设置XML声明中standalone为yes，即没有dtd和schema作为该XML的说明文档，且不显示该属性
+                // document.setXmlStandalone(true);
 
-            // 创建根节点
-            Element bookstore = document.createElement("bookstore");
+                // 创建根节点
+                Element root = document.createElement("root");
 
-            // 创建子节点，并设置属性
-            Element book = document.createElement("book");
-            book.setAttribute("id", "1");
+                for (int i = 0; i < Items.size(); i++) {
+                    new File("./xmls/"+Items.get(i).getName());
 
-            // 为book添加子节点
-            Element name = document.createElement("name");
-            name.setTextContent("安徒生童话");
-            book.appendChild(name);
+                    // 创建子节点，并设置属性
+                    Element metaItem = document.createElement("metaItem");
+                    //book.setAttribute("id", "1");
 
-            Element author = document.createElement("author");
-            author.setTextContent("安徒生");
-            book.appendChild(author);
+                    // 为book添加子节点
+                    Element name = document.createElement("name");
+                    name.setTextContent(Items.get(i).getName());
+                    metaItem.appendChild(name);
 
-            Element price = document.createElement("price");
-            price.setTextContent("49");
-            book.appendChild(price);
+                    Element key = document.createElement("key");
+                    key.setTextContent(Items.get(i).getKey());
+                    metaItem.appendChild(key);
 
-            // 为根节点添加子节点
-            bookstore.appendChild(book);
+                    Element type = document.createElement("type");
+                    name.setTextContent(Items.get(i).getType());
+                    metaItem.appendChild(type);
 
-            // 将根节点添加到Document下
-            document.appendChild(bookstore);
+                    Element length = document.createElement("length");
+                    length.setTextContent(Items.get(i).getLength());
+                    metaItem.appendChild(length);
 
-            /*
-             * 下面开始实现： 生成XML文件
-             */
+                    Element source = document.createElement("source");
+                    source.setTextContent(Items.get(i).getSource());
+                    metaItem.appendChild(source);
 
-            // 创建TransformerFactory对象
-            TransformerFactory tff = TransformerFactory.newInstance();
+                    Element unique = document.createElement("unique");
+                    unique.setTextContent(Items.get(i).getUnique());
+                    metaItem.appendChild(unique);
 
-            // 创建Transformer对象
-            Transformer tf = tff.newTransformer();
+                    Element constrain = document.createElement("constrain");
+                    constrain.setTextContent(Items.get(i).getConstrain());
+                    metaItem.appendChild(constrain);
 
-            // 设置输出数据时换行
-            tf.setOutputProperty(OutputKeys.INDENT, "yes");
+                    Element node = document.createElement("node");
+                    node.setTextContent(Items.get(i).getNode());
+                    metaItem.appendChild(node);
 
-            // 使用Transformer的transform()方法将DOM树转换成XML
-            tf.transform(new DOMSource(document), new StreamResult(dest));
+                    Element method = document.createElement("method");
+                    method.setTextContent(Items.get(i).getMethod());
+                    metaItem.appendChild(method);
+
+                    Element range = document.createElement("range");
+                    range.setTextContent(Items.get(i).getRange());
+                    metaItem.appendChild(range);
+
+                    Element notation = document.createElement("notation");
+                    notation.setTextContent(Items.get(i).getNotation());
+                    metaItem.appendChild(notation);
+
+                    Element value = document.createElement("value");
+                    value.setTextContent(Items.get(i).getValue());
+                    metaItem.appendChild(value);
 
 
-            return null;
+                    // 为根节点添加子节点
+                    root.appendChild(metaItem);
+                }
+                // 将根节点添加到Document下
+                document.appendChild(root);
 
-        } catch (ParserConfigurationException e) {
-            e.printStackTrace();
-        } catch (TransformerConfigurationException e) {
-            e.printStackTrace();
-        } catch (TransformerException e) {
-            e.printStackTrace();
+                /*
+                 * 下面开始实现： 生成XML文件
+                 */
+
+                // 创建TransformerFactory对象
+                TransformerFactory tff = TransformerFactory.newInstance();
+
+                // 创建Transformer对象
+                Transformer tf = tff.newTransformer();
+
+                // 设置输出数据时换行
+                tf.setOutputProperty(OutputKeys.INDENT, "yes");
+
+                // 使用Transformer的transform()方法将DOM树转换成XML
+                tf.transform(new DOMSource(document), new StreamResult(dest));
+
+                new CreateXMLResult();
+
+
+                new ArrayList<CreateXMLResult>();
+
+                return null;
+
+            } catch (ParserConfigurationException e) {
+                e.printStackTrace();
+            } catch (TransformerConfigurationException e) {
+                e.printStackTrace();
+            } catch (TransformerException e) {
+                e.printStackTrace();
+            }
+
+
         }
-
         return null;
     }
 }
