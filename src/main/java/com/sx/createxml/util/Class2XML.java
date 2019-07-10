@@ -44,7 +44,8 @@ public class Class2XML {
                 Element root = document.createElement("root");
 
                 for (int i = 0; i < Items.size(); i++) {
-                    new File("./xmls/"+Items.get(i).getName());
+//                   File dest_path =  new File("./xmls/"+Items.get(i).getName());
+
 
                     // 创建子节点，并设置属性
                     Element metaItem = document.createElement("metaItem");
@@ -122,10 +123,16 @@ public class Class2XML {
                 // 使用Transformer的transform()方法将DOM树转换成XML
                 tf.transform(new DOMSource(document), new StreamResult(dest));
 
-                new CreateXMLResult();
+                CreateXMLResult createXMLResult = new CreateXMLResult();
+
+                createXMLResult.setCreatePath("./xmls/"+ print4XML.getPrintId());
+
+                createXMLResult.setPrintId(print4XML.getPrintId());
 
 
-                new ArrayList<CreateXMLResult>();
+                ArrayList<CreateXMLResult>  list_Result =  new ArrayList<CreateXMLResult>();
+
+                list_Result.add(createXMLResult);
 
                 return null;
 
