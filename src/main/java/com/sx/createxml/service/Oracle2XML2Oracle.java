@@ -30,9 +30,9 @@ public class Oracle2XML2Oracle {
     public Object createXMLFromOracle() {
 
 
-
+        String destFolerPath = null ;
         ArrayList<Print4XML> print4XMLList = fillPrintList.createPrint4XMLList();
-        ArrayList<CreateXMLResult> xmlByDOM = Class2XML.createXMLByDOM(null, print4XMLList);
+        ArrayList<CreateXMLResult> xmlByDOM = Class2XML.createXMLByDOM(destFolerPath,print4XMLList);
 
         //TODO  通过xmlByBom把图纸地址写回oracle
         return null;
