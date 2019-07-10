@@ -34,16 +34,17 @@ public class FillPrintList {
     public ArrayList<Print4XML> createPrint4XMLList() {
         //构造所有print的数组
         ArrayList<Print4XML> prints = new ArrayList<>();
-        List<Integer> printIds = new ArrayList<>();
+//        List<Integer> printIds = new ArrayList<>();
+            int[] printIds =OraclePrintIDs.printIds;
 //        List<DtDocumentInfo> all = dtDocumentInfoRepository.findAll();
 //        all.forEach(dtDocumentInfo -> {
 //            printIds.add(Integer.parseInt(dtDocumentInfo.getMainid()));
 //        });
         //对print数组进行遍历,然后返回一个printList供生成xml的函数调用
-        for (int i = 0; i < printIds.size(); i++) {
+        for (int i = 0; i < printIds.length; i++) {
 
             //对每一个oracle中的图纸id都从mysql三个表里找数剧
-            Integer idInt = printIds.get(i);
+            Integer idInt = printIds[i];
             Long idL = Long.parseLong(idInt.toString());
 
             //把数据填入print4XML,用于生成XML

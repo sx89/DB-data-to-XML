@@ -1,5 +1,6 @@
 package com.sx.createxml.controller;
 
+import com.sx.createxml.dao.repository.*;
 import com.sx.createxml.service.Oracle2XML2Oracle;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -14,6 +15,17 @@ import org.springframework.web.bind.annotation.RestController;
 public class Oracle2XML2OracleController {
     @Autowired
     Oracle2XML2Oracle oracle2XML2Oracle;
+
+    @Autowired
+    MetaItemRepository metaItemRepository;
+    @Autowired
+    MajorPlanningRepository majorPlanningRepository;
+    @Autowired
+    MajorDetailRepository majorDetailRepository;
+    @Autowired
+    ProjectApplyRepository projectApplyRepository;
+    @Autowired
+    SubProjectDetailRepository subProjectDetailRepository;
 
     @RequestMapping("/hello")
     @ResponseBody
