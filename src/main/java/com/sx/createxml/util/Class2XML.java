@@ -27,7 +27,7 @@ public class Class2XML {
         ArrayList<CreateXMLResult> list_Result = new ArrayList<CreateXMLResult>();
         for (int j = 0; j < prints.size(); j++) {
             Print4XML print4XML = prints.get(j);
-            List<MetaItem> Items = print4XML.getItems();
+            List<MetaItem> items = print4XML.getItems();
             DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
             try {
 
@@ -43,7 +43,7 @@ public class Class2XML {
                 // 创建根节点
                 Element root = document.createElement("root");
 
-                for (int i = 0; i < Items.size(); i++) {
+                for (int i = 0; i < items.size(); i++) {
 //                   File dest_path =  new File("./xmls/"+Items.get(i).getName());
 
 
@@ -53,7 +53,7 @@ public class Class2XML {
 
                     // 为book添加子节点
                     Element name = document.createElement("name");
-                    String name1 = Items.get(i).getName();
+                    String name1 = items.get(i).getName();
                     if (StringUtils.isEmpty(name1)) {
                         name1 = "null";
                     }
@@ -61,7 +61,7 @@ public class Class2XML {
                     metaItem.appendChild(name);
 
                     Element key = document.createElement("key");
-                    String key1 = Items.get(i).getKey();
+                    String key1 = items.get(i).getKey();
                     if (StringUtils.isEmpty(key1)) {
                         key1 = "null";
                     }
@@ -70,7 +70,7 @@ public class Class2XML {
 
 
                     Element type = document.createElement("type");
-                    String type1 = Items.get(i).getType();
+                    String type1 = items.get(i).getType();
                     if (StringUtils.isEmpty(type1)) {
                         type1 = "null";
                     }
@@ -79,7 +79,7 @@ public class Class2XML {
 
 
                     Element length = document.createElement("length");
-                    String length1 = Items.get(i).getLength();
+                    String length1 = items.get(i).getLength();
                     if (StringUtils.isEmpty(length1)) {
                         length1 = "null";
                     }
@@ -87,7 +87,7 @@ public class Class2XML {
                     metaItem.appendChild(length);
 
                     Element source = document.createElement("source");
-                    String source1 = Items.get(i).getSource();
+                    String source1 = items.get(i).getSource();
                     if (StringUtils.isEmpty(source1)) {
                         source1 = "null";
                     }
@@ -95,7 +95,7 @@ public class Class2XML {
                     metaItem.appendChild(source);
 
                     Element unique = document.createElement("unique");
-                    String unique1 = Items.get(i).getUnique();
+                    String unique1 = items.get(i).getUnique();
                     if (StringUtils.isEmpty(unique1)) {
                         unique1 = "null";
                     }
@@ -103,7 +103,7 @@ public class Class2XML {
                     metaItem.appendChild(unique);
 
                     Element constrain = document.createElement("constrain");
-                    String constrain1 = Items.get(i).getConstrain();
+                    String constrain1 = items.get(i).getConstrain();
                     if (StringUtils.isEmpty(constrain1)) {
                         constrain1 = "null";
                     }
@@ -111,7 +111,7 @@ public class Class2XML {
                     metaItem.appendChild(constrain);
 
                     Element node = document.createElement("node");
-                    String node1 = Items.get(i).getNode();
+                    String node1 = items.get(i).getNode();
                     if (StringUtils.isEmpty(node1)) {
                         node1 = "null";
 
@@ -120,7 +120,7 @@ public class Class2XML {
                     metaItem.appendChild(node);
 
                     Element method = document.createElement("method");
-                    String method1 = Items.get(i).getMethod();
+                    String method1 = items.get(i).getMethod();
                     if (StringUtils.isEmpty(method1)) {
                         method1 = "null";
                     }
@@ -128,7 +128,7 @@ public class Class2XML {
                     metaItem.appendChild(method);
 
                     Element range = document.createElement("range");
-                    String range1 = Items.get(i).getRange();
+                    String range1 = items.get(i).getRange();
                     if (StringUtils.isEmpty(range1)) {
                         range1 = "null";
                     }
@@ -137,7 +137,7 @@ public class Class2XML {
 
 
                     Element notation = document.createElement("notation");
-                    String notation1 = Items.get(i).getNotation();
+                    String notation1 = items.get(i).getNotation();
                     if (StringUtils.isEmpty(notation1)) {
                         notation1 = "null";
 
@@ -146,7 +146,7 @@ public class Class2XML {
                     metaItem.appendChild(notation);
 
                     Element value = document.createElement("value");
-                    String value1 = Items.get(i).getValue();
+                    String value1 = items.get(i).getValue();
                     if (StringUtils.isEmpty(value1)) {
                         value1 = "null";
                     }

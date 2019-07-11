@@ -2,10 +2,14 @@ package com.sx.createxml.service;
 
 import com.sx.createxml.dao.repository.*;
 import com.sx.createxml.dao.repository2.DtDocumentInfoRepository;
+import com.sx.createxml.dao.repository3.DpsAllProjectVRepository;
+import com.sx.createxml.dao.repository4.ProjectAndProcessRepository;
 import com.sx.createxml.pojo.XMLDataStruct.OraclePrintIDs;
 import com.sx.createxml.pojo.XMLDataStruct.Print4XML;
+import com.sx.createxml.pojo.flowcore.ProjectAndProcess;
 import com.sx.createxml.pojo.mysql.*;
 import com.sx.createxml.pojo.oracle.DtDocumentInfo;
+import com.sx.createxml.pojo.oracleEBM.DpsAllProjectV;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -31,7 +35,12 @@ public class FillPrintList {
     SubProjectDetailRepository subProjectDetailRepository;
     @Autowired
     DtDocumentInfoRepository dtDocumentInfoRepository;
-
+    @Autowired
+    DpsAllProjectVRepository dpsAllProjectVRepository;
+    @Autowired
+    ProjectAndProcessRepository projectAndProcessRepository;
+    @Autowired
+    DwgFrameInformationRepository dwgFrameInformationRepository;
 
     public ArrayList<Print4XML> createPrint4XMLList() {
         //构造所有print的数组
@@ -70,8 +79,24 @@ public class FillPrintList {
             //从subProjectDetail表找数据
             SubProjectDetail subProjectDetail = subProjectDetailRepository.getById(subProjectId);
 
+            //从EBM表找数据
+            DpsAllProjectV dpsAllProjectV = dpsAllProjectVRepository.findByProjectId(projectId.intValue());
+
+            String processId = majorPlanning.getProcessId();
+
+            String dwgFrame = majorPlanning.getDwgFrame();
+
+            String groupName = majorPlanning.getGroupName();
+
+            //从flowcore表找数据
+            ProjectAndProcess projectAndProcess = projectAndProcessRepository.getByProcessId(processId);
+
+            DwgFrameInformation dwgFrameInformation =
+                    dwgFrameInformationRepository.findByNameAndGroupName(dwgFrame,groupName);
+
             List<MetaItem> all1 = metaItemRepository.findAll();
-            print4XML.fillMetaItems(majorPlanning, majorDetail, subProjectDetail, projectApply, all1);
+            print4XML.fillMetaItems(majorPlanning, majorDetail, subProjectDetail, projectApply,
+                    dpsAllProjectV, projectAndProcess,dwgFrameInformation,all1);
 
 
             //把填好的print放进prints(list)
