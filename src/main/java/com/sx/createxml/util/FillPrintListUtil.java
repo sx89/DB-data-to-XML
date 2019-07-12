@@ -1,17 +1,16 @@
-package com.sx.createxml.service;
+package com.sx.createxml.util;
 
 import com.sx.createxml.dao.repository.*;
 import com.sx.createxml.dao.repository2.DtDocumentInfoRepository;
 import com.sx.createxml.dao.repository3.DpsAllProjectVRepository;
 import com.sx.createxml.dao.repository4.ProjectAndProcessRepository;
-import com.sx.createxml.pojo.XMLDataStruct.OraclePrintIDs;
-import com.sx.createxml.pojo.XMLDataStruct.Print4XML;
+import com.sx.createxml.pojo.XMLDataStruct.PrintWithItem;
 import com.sx.createxml.pojo.flowcore.ProjectAndProcess;
 import com.sx.createxml.pojo.mysql.*;
 import com.sx.createxml.pojo.oracle.DtDocumentInfo;
 import com.sx.createxml.pojo.oracleEBM.DpsAllProjectV;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
+import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -21,8 +20,8 @@ import java.util.List;
  * @author sunxu93@163.com
  * @date 19/7/8/008 18:51
  */
-@Service
-public class FillPrintList {
+@Component
+public class FillPrintListUtil {
     @Autowired
     MetaItemRepository metaItemRepository;
     @Autowired
@@ -42,12 +41,12 @@ public class FillPrintList {
     @Autowired
     DwgFrameInformationRepository dwgFrameInformationRepository;
 
-    public ArrayList<Print4XML> createPrint4XMLList() {
+    public ArrayList<PrintWithItem> createPrint4XMLList() {
         //构造所有print的数组
 
-        ArrayList<Print4XML> prints = new ArrayList<>();
+        ArrayList<PrintWithItem> prints = new ArrayList<>();
         List<Integer> printIds = new ArrayList<>();
-//            int[] printIds =OraclePrintIDs.printIds;
+//            int[] printIds =OraclePrintID.printIds;
         List<DtDocumentInfo> all = dtDocumentInfoRepository.findAll();
         all.forEach(dtDocumentInfo -> {
             printIds.add(Integer.parseInt(dtDocumentInfo.getMainid()));
@@ -60,8 +59,8 @@ public class FillPrintList {
             Long idL = Long.parseLong(idInt.toString());
 
             //把数据填入print4XML,用于生成XML
-            Print4XML print4XML = new Print4XML();
-            print4XML.setPrintId(idInt);
+            PrintWithItem printWithItem = new PrintWithItem();
+            printWithItem.setPrintId(idInt);
 
             //从majorplaning拿到mysql三个表的id
             MajorPlanning majorPlanning = majorPlanningRepository.getById(idL);
@@ -95,12 +94,12 @@ public class FillPrintList {
                     dwgFrameInformationRepository.findByNameAndGroupName(dwgFrame,groupName);
 
             List<MetaItem> all1 = metaItemRepository.findAll();
-            print4XML.fillMetaItems(majorPlanning, majorDetail, subProjectDetail, projectApply,
+            printWithItem.fillMetaItems(majorPlanning, majorDetail, subProjectDetail, projectApply,
                     dpsAllProjectV, projectAndProcess,dwgFrameInformation,all1);
 
 
             //把填好的print放进prints(list)
-            prints.add(print4XML);
+            prints.add(printWithItem);
 
 
         }

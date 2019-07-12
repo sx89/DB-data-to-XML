@@ -1,9 +1,11 @@
 package com.sx.createxml.service;
 
 import com.sx.createxml.dao.repository.*;
+import com.sx.createxml.dao.repository2.DtDocumentInfoRepository;
 import com.sx.createxml.pojo.CreateXMLResult;
-import com.sx.createxml.pojo.XMLDataStruct.Print4XML;
-import com.sx.createxml.util.Class2XML;
+import com.sx.createxml.pojo.XMLDataStruct.PrintWithItem;
+import com.sx.createxml.util.CreateXMLUtil;
+import com.sx.createxml.util.FillPrintListUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -15,6 +17,7 @@ import java.util.ArrayList;
  */
 @Service
 public class Oracle2XML2Oracle {
+
     @Autowired
     MetaItemRepository metaItemRepository;
     @Autowired
@@ -26,15 +29,23 @@ public class Oracle2XML2Oracle {
     @Autowired
     SubProjectDetailRepository subProjectDetailRepository;
     @Autowired
-    FillPrintList fillPrintList;
+    DtDocumentInfoRepository dtDocumentInfoRepository;
+    @Autowired
+    FillPrintListUtil fillPrintListUtil;
+
     public Object createXMLFromOracle() {
 
-
+        //指定存放xml的路径
         String destFolerPath = null ;
-        ArrayList<Print4XML> print4XMLList = fillPrintList.createPrint4XMLList();
-        ArrayList<CreateXMLResult> xmlByDOM = Class2XML.createXMLByDOM(destFolerPath,print4XMLList);
+        ArrayList<PrintWithItem> printWithItemList = fillPrintListUtil.createPrint4XMLList();
+        ArrayList<CreateXMLResult> xmlByDOM = CreateXMLUtil.createXMLByDOM(destFolerPath, printWithItemList);
 
-        //TODO  通过xmlByBom把图纸地址写回oracle
-        return null;
+        for (CreateXMLResult createXMLResult : xmlByDOM) {
+            String createPath = createXMLResult.getCreatePath();
+            String mainId = createXMLResult.getPrintId().toString();
+            dtDocumentInfoRepository.updateMetaFileByMainid(createPath, mainId);
+        }
+        return "create xml success";
     }
+
 }

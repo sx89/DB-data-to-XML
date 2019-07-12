@@ -17,7 +17,7 @@ import java.util.Map;
  * @author sunxu93@163.com
  * @date 19/7/8/008 18:00
  */
-public class Print4XML {
+public class PrintWithItem {
 
     @Autowired
     @Qualifier("teamcoreServiceImpl")
@@ -37,7 +37,7 @@ public class Print4XML {
                 projectAndProcess,dwgFrameInformation,items);
 
     }
-    public Print4XML() {
+    public PrintWithItem() {
 
     }
 
@@ -141,6 +141,7 @@ public class Print4XML {
 
     }
 }
+//        图纸的每个ItemValue的获取途径
 
 //        载体	载体
 //        单位	M
