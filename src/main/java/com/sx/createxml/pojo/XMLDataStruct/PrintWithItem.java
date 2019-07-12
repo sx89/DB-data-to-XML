@@ -9,7 +9,7 @@ import java.util.List;
  * @author sunxu93@163.com
  * @date 19/7/8/008 18:00
  */
-public class Print4XML {
+public class PrintWithItem {
 
 
 
@@ -19,10 +19,10 @@ public class Print4XML {
     public List<MetaItem>fillMetaItems(MajorPlanning majorPlanning, MajorDetail majorDetail,
                                             SubProjectDetail subProjectDetail,
                                             ProjectApply projectApply,List<MetaItem> items) {
-        return filleItems(majorPlanning, majorDetail, subProjectDetail, projectApply, items);
+        return fillItems(majorPlanning, majorDetail, subProjectDetail, projectApply, items);
 
     }
-    public Print4XML() {
+    public PrintWithItem() {
 
     }
 
@@ -44,9 +44,9 @@ public class Print4XML {
         this.printId = printId;
     }
 
-    private List<MetaItem> filleItems(MajorPlanning majorPlanning, MajorDetail majorDetail,
-                                      SubProjectDetail subProjectDetail,
-                                      ProjectApply projectApply, List<MetaItem> items) {
+    private List<MetaItem> fillItems(MajorPlanning majorPlanning, MajorDetail majorDetail,
+                                     SubProjectDetail subProjectDetail,
+                                     ProjectApply projectApply, List<MetaItem> items) {
         this.items = items;
         items.get(0).setValue("文件级");
         items.get(1).setValue("载体");
@@ -101,6 +101,7 @@ public class Print4XML {
 
     }
 }
+//        图纸的每个ItemValue的获取途径
 
 //        载体	载体
 //        单位	M

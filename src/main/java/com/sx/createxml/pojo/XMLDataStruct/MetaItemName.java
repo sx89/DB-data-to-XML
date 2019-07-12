@@ -4,10 +4,16 @@ package com.sx.createxml.pojo.XMLDataStruct;
  * @author sunxu93@163.com
  * @date 19/7/9/009 16:48
  */
-public  class MetaItemNames {
+public class MetaItemName {
 
     public static final String[] itemsName = {
-            "文件层级", "载体", "单位", "数量或大小", "格式名称", "存址", "文档创建程序名称",
+            "文件层级",
+            "载体",
+            "单位",
+            "数量或大小",
+            "格式名称",
+            "存址",
+            "文档创建程序名称",
             "计算机文件名",
 
             "设计资质",

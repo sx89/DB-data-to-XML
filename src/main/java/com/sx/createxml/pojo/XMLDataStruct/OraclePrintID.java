@@ -4,7 +4,7 @@ package com.sx.createxml.pojo.XMLDataStruct;
  * @author sunxu93@163.com
  * @date 19/7/8/008 18:48
  */
-public class OraclePrintIDs {
+public class OraclePrintID {
     public static   int[] printIds ={2061,	2062,	2063,	2064,	2065,	2066,	2067,	2068,	2069,	2070,
         2071,	2072,	2073,	2074,	2075,	2076,	2077,	2078,	2079,	2080,	2081,	2082,	2083,	2084,
             2085,	2086,	2087,	2088,	2089,	2090,	2091,	2092,	2093,	2094,	2095,	2096,	2097,
