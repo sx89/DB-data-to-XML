@@ -1,5 +1,8 @@
 package com.sx.createxml.pojo.XMLDataStruct;
 
+import com.sx.createxml.dao.repository.MetaItemRepository;
+import com.sx.createxml.dao.repository4.ActHiTaskinstRepository;
+import com.sx.createxml.pojo.flowcore.ActHiTaskinst;
 import com.sx.createxml.pojo.flowcore.ProjectAndProcess;
 import com.sx.createxml.pojo.mysql.*;
 import com.sx.createxml.pojo.oracleEBM.DpsAllProjectV;
@@ -24,18 +27,24 @@ public class PrintWithItem {
     @Qualifier("teamcoreServiceImpl")
     ITeamcoreService teamcoreService;
 
+    @Autowired
+    ActHiTaskinstRepository actHiTaskinstRepository;
+    @Autowired
+    MetaItemRepository metaItemRepository;
 
     private  Integer printId;
     private List<MetaItem> items;
+    private List<ActionMetaItem> actionMetaItems;
 
-    public List<MetaItem>fillMetaItems(MajorPlanning majorPlanning, MajorDetail majorDetail,
+    public void fillMetaItems(MajorPlanning majorPlanning, MajorDetail majorDetail,
                                        SubProjectDetail subProjectDetail,
                                        ProjectApply projectApply, DpsAllProjectV dpsAllProjectV,
                                        ProjectAndProcess projectAndProcess,
-                                       DwgFrameInformation dwgFrameInformation,
-                                       List<MetaItem> items) {
-        return filleItems(majorPlanning, majorDetail, subProjectDetail, projectApply,dpsAllProjectV,
-                projectAndProcess,dwgFrameInformation,items);
+                                       DwgFrameInformation dwgFrameInformation) {
+
+        this.items = metaItemRepository.findAll();
+        this.filleItems(majorPlanning, majorDetail, subProjectDetail, projectApply,dpsAllProjectV,
+                projectAndProcess,dwgFrameInformation);
 
     }
     public PrintWithItem() {
@@ -60,12 +69,12 @@ public class PrintWithItem {
         this.printId = printId;
     }
 
-    private List<MetaItem> filleItems(MajorPlanning majorPlanning, MajorDetail majorDetail,
+    private void filleItems(MajorPlanning majorPlanning, MajorDetail majorDetail,
                                       SubProjectDetail subProjectDetail,
                                       ProjectApply projectApply, DpsAllProjectV dpsAllProjectV,
                                       ProjectAndProcess projectAndProcess,
-                                      DwgFrameInformation dwgFrameInformation,List<MetaItem> items) {
-        this.items = items;
+                                      DwgFrameInformation dwgFrameInformation) {
+
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         // 数据库2,3,30，文件大小，大小单位，版次
         String gitlabId = majorDetail.getGitlabId();
@@ -159,7 +168,30 @@ public class PrintWithItem {
 
         }
 
-        return this.items;
+
+        /**
+         * 填充actionMetaItem链表
+         */
+        actionMetaItems = new ArrayList<>();
+        List<ActHiTaskinst> actHiTaskinstRepositoryAll = actHiTaskinstRepository.findAll();
+        for (int i = 0; i <actHiTaskinstRepositoryAll.size(); i++) {
+
+            ActHiTaskinst actHiTaskinst = actHiTaskinstRepositoryAll.get(i);
+
+            ActionMetaItem actionMetaItem = new ActionMetaItem();
+
+            //TODO
+//            actionMetaItem.setActionType();
+//            actionMetaItem.setChargePersonPositon();
+//            actionMetaItem.setChargePersonName();
+//            actionMetaItem.setChargePersonIp();
+//            actionMetaItem.setProcessOccurrenceTime();
+//            actionMetaItem.setProcessOrder();
+//            actionMetaItem.setProcessingState();
+
+            actionMetaItems.add(actionMetaItem);
+
+        }
 
     }
 }
