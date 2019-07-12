@@ -1,12 +1,16 @@
 package com.sx.createxml.pojo;
 
 /**
+ * 用于存储创建xml之后的返回结果
+ *
  * @author sunxu93@163.com
  * @date 19/7/9/009 13:23
  */
 public class CreateXMLResult {
     private String printName;
+    //xml文件的存储路径
     private String createPath;
+    //图纸id
     private Integer printId;
 
     public CreateXMLResult() {
