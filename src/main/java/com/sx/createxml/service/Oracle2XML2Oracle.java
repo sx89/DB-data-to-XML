@@ -45,7 +45,7 @@ public class Oracle2XML2Oracle {
             String mainId = createXMLResult.getPrintId().toString();
             dtDocumentInfoRepository.updateMetaFileByMainid(createPath, mainId);
         }
-        return null;
+        return "create xml success";
     }
 
 }

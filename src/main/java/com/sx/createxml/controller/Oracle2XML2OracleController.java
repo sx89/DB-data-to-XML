@@ -37,7 +37,6 @@ public class Oracle2XML2OracleController {
     @RequestMapping("createxml")
     @ResponseBody
     public Object createXML() {
-        oracle2XML2Oracle.createXMLFromOracle();
-        return null;
+        return oracle2XML2Oracle.createXMLFromOracle();
     }
 }
