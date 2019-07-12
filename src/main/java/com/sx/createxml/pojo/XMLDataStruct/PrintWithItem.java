@@ -180,13 +180,14 @@ public class PrintWithItem {
 
             ActionMetaItem actionMetaItem = new ActionMetaItem();
 
-            actionMetaItem.setActionType();
-            actionMetaItem.setChargePersonPositon();
-            actionMetaItem.setChargePersonName();
-            actionMetaItem.setChargePersonIp();
-            actionMetaItem.setProcessOccurrenceTime();
-            actionMetaItem.setProcessOrder();
-            actionMetaItem.setProcessingState();
+            //TODO
+//            actionMetaItem.setActionType();
+//            actionMetaItem.setChargePersonPositon();
+//            actionMetaItem.setChargePersonName();
+//            actionMetaItem.setChargePersonIp();
+//            actionMetaItem.setProcessOccurrenceTime();
+//            actionMetaItem.setProcessOrder();
+//            actionMetaItem.setProcessingState();
 
             actionMetaItems.add(actionMetaItem);
 
