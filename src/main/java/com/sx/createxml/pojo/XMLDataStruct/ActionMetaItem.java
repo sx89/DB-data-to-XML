@@ -2,28 +2,9 @@ package com.sx.createxml.pojo.XMLDataStruct;
 
 /**
  * @author sunxu93@163.com
- * @date 19/7/12/012 16:48
+ * @date 19/7/12/012 18:31
  */
-public class ProcessLog {
-    private ActionMetaItem actionMetaItem;
-
-    public ProcessLog(ActionMetaItem actionMetaItem) {
-        this.actionMetaItem = actionMetaItem;
-    }
-
-    public ProcessLog() {
-    }
-
-    public ActionMetaItem getActionMetaItem() {
-        return actionMetaItem;
-    }
-
-    public void setActionMetaItem(ActionMetaItem actionMetaItem) {
-        this.actionMetaItem = actionMetaItem;
-    }
-}
-
-class ActionMetaItem {
+public class ActionMetaItem {
     /**
      * 行为事件类型
      */
