@@ -19,19 +19,19 @@ import java.util.Map;
 @Configuration
 @EnableTransactionManagement
 @EnableJpaRepositories(
-        entityManagerFactoryRef = "secondaryEntityManagerFactory",
-        transactionManagerRef = "secondaryTransactionManager",
+        entityManagerFactoryRef = "thirdEntityManagerFactory",
+        transactionManagerRef = "thirdTransactionManager",
         basePackages = {
-                "com.sx.createxml.dao.repository2"
+                "com.sx.createxml.dao.repository3"
         }
 )
-public class SecondaryConfig {
+public class ThirdConfig {
 
     /**
      * 注入 sqlite数据源
      */
-    @Resource(name = "secondaryDataSource")
-    private DataSource secondaryDataSource;
+    @Resource(name = "thirdDataSource")
+    private DataSource thirdDataSource;
 
     /**
      * 注入JPA配置实体
@@ -67,16 +67,16 @@ public class SecondaryConfig {
  * persistenceUnit  持久性单元的名称。 如果只建立一个EntityManagerFactory，你可以省略这个，但是如果在同一个应用程序中有多个，你应该给它们不同的名字
  * properties       标准JPA或供应商特定配置的通用属性。 这些属性覆盖构造函数中提供的任何值。
  */
-    @Bean(name = "secondaryEntityManagerFactory")
+    @Bean(name = "thirdEntityManagerFactory")
     public LocalContainerEntityManagerFactoryBean
-    secondaryEntityManagerFactory(
+    thirdEntityManagerFactory(
             EntityManagerFactoryBuilder builder) {
         return
                 builder
-                        .dataSource(secondaryDataSource)
-                        .packages("com.sx.createxml.pojo.oracle")
+                        .dataSource(thirdDataSource)
+                        .packages("com.sx.createxml.pojo.oracleEBM")
                         .properties(getVendorProperties())
-                        .persistenceUnit("db2")
+                        .persistenceUnit("db3")
                         .build();
     }
 
@@ -86,9 +86,9 @@ public class SecondaryConfig {
      * @param builder
      * @return 实体管理器
      */
-    @Bean(name = "secondaryEntityManager")
+    @Bean(name = "thirdEntityManager")
     public EntityManager entityManager(EntityManagerFactoryBuilder builder) {
-        return secondaryEntityManagerFactory(builder).getObject().createEntityManager();
+        return thirdEntityManagerFactory(builder).getObject().createEntityManager();
     }
     /**
      * 配置事务transactionManager
@@ -96,8 +96,8 @@ public class SecondaryConfig {
      * @param builder
      * @return 事务管理器
      */
-    @Bean(name = "secondaryTransactionManager")
-    public PlatformTransactionManager secondaryTransactionManager(EntityManagerFactoryBuilder builder) {
-        return new JpaTransactionManager(secondaryEntityManagerFactory(builder).getObject());
+    @Bean(name = "thirdTransactionManager")
+    public PlatformTransactionManager ThirdTransactionManager(EntityManagerFactoryBuilder builder) {
+        return new JpaTransactionManager(thirdEntityManagerFactory(builder).getObject());
     }
 }
