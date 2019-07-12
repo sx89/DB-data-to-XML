@@ -97,7 +97,7 @@ public class SecondaryConfig {
      * @return 事务管理器
      */
     @Bean(name = "secondaryTransactionManager")
-    public PlatformTransactionManager transactionManagerSecondary(EntityManagerFactoryBuilder builder) {
+    public PlatformTransactionManager secondaryTransactionManager(EntityManagerFactoryBuilder builder) {
         return new JpaTransactionManager(secondaryEntityManagerFactory(builder).getObject());
     }
 }

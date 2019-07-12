@@ -11,6 +11,19 @@ import javax.sql.DataSource;
 
 @Configuration
 public class DataSourceConfig {
+    @Bean(name = "forthDataSource")
+    @Qualifier(value = "forthDataSource")  //spring装配bean的唯一标识
+    @ConfigurationProperties(prefix = "spring.datasource.forth")   //application.properties配置文件中该数据源的配置前缀
+    public DataSource forthDataSource(){
+        return DataSourceBuilder.create().build();
+    }
+
+    @Bean(name = "thirdDataSource")
+    @Qualifier(value = "thirdDataSource")  //spring装配bean的唯一标识
+    @ConfigurationProperties(prefix = "spring.datasource.third")   //application.properties配置文件中该数据源的配置前缀
+    public DataSource thirdDataSource(){
+        return DataSourceBuilder.create().build();
+    }
 
     @Bean(name = "secondaryDataSource")
     @Qualifier(value = "secondaryDataSource")  //spring装配bean的唯一标识

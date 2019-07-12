@@ -1,9 +1,21 @@
 package com.sx.createxml.pojo.XMLDataStruct;
 
+import com.sx.createxml.dao.repository.MetaItemRepository;
+import com.sx.createxml.dao.repository4.ActHiTaskinstRepository;
+import com.sx.createxml.pojo.flowcore.ActHiTaskinst;
+import com.sx.createxml.pojo.flowcore.ProjectAndProcess;
 import com.sx.createxml.pojo.mysql.*;
+import com.sx.createxml.pojo.oracleEBM.DpsAllProjectV;
+import com.sx.createxml.service.teamcore.ITeamcoreService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.util.StringUtils;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
+import java.util.Map;
 
 /**
  * @author sunxu93@163.com
@@ -11,15 +23,28 @@ import java.util.List;
  */
 public class PrintWithItem {
 
+    @Autowired
+    @Qualifier("teamcoreServiceImpl")
+    ITeamcoreService teamcoreService;
 
+    @Autowired
+    ActHiTaskinstRepository actHiTaskinstRepository;
+    @Autowired
+    MetaItemRepository metaItemRepository;
 
     private  Integer printId;
     private List<MetaItem> items;
+    private List<ActionMetaItem> actionMetaItems;
 
-    public List<MetaItem>fillMetaItems(MajorPlanning majorPlanning, MajorDetail majorDetail,
-                                            SubProjectDetail subProjectDetail,
-                                            ProjectApply projectApply,List<MetaItem> items) {
-        return fillItems(majorPlanning, majorDetail, subProjectDetail, projectApply, items);
+    public void fillMetaItems(MajorPlanning majorPlanning, MajorDetail majorDetail,
+                                       SubProjectDetail subProjectDetail,
+                                       ProjectApply projectApply, DpsAllProjectV dpsAllProjectV,
+                                       ProjectAndProcess projectAndProcess,
+                                       DwgFrameInformation dwgFrameInformation) {
+
+        this.items = metaItemRepository.findAll();
+        this.filleItems(majorPlanning, majorDetail, subProjectDetail, projectApply,dpsAllProjectV,
+                projectAndProcess,dwgFrameInformation);
 
     }
     public PrintWithItem() {
@@ -44,14 +69,42 @@ public class PrintWithItem {
         this.printId = printId;
     }
 
-    private List<MetaItem> fillItems(MajorPlanning majorPlanning, MajorDetail majorDetail,
-                                     SubProjectDetail subProjectDetail,
-                                     ProjectApply projectApply, List<MetaItem> items) {
-        this.items = items;
+    private void filleItems(MajorPlanning majorPlanning, MajorDetail majorDetail,
+                                      SubProjectDetail subProjectDetail,
+                                      ProjectApply projectApply, DpsAllProjectV dpsAllProjectV,
+                                      ProjectAndProcess projectAndProcess,
+                                      DwgFrameInformation dwgFrameInformation) {
+
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        // 数据库2,3,30，文件大小，大小单位，版次
+        String gitlabId = majorDetail.getGitlabId();
+        String filePath = majorPlanning.getFilePath();
+        if (StringUtils.isEmpty(filePath)) {
+            items.get(2).setValue(null);
+            items.get(3).setValue(null);
+            items.get(30).setValue(null);
+            items.get(32).setValue(null);
+        } else {
+            Map<String, Object> result =
+                    teamcoreService.getFileSizeAndVersion(Long.valueOf(gitlabId), filePath);
+            Map<String,Object> ans = (Map<String,Object>)result.get("result");
+            String size = (String)ans.get("size");
+            int version = (int)ans.get("version");
+            String commitId = (String)ans.get("commitId");
+            int index = size.indexOf(" ");
+            items.get(2).setValue(size.substring(index+1));
+            items.get(3).setValue(size.substring(0,index));
+            items.get(30).setValue(String.valueOf(version));
+            items.get(32).setValue("http://webviewer.arcplus-99.com:3010/samples/viewing/viewing/index.html?" +
+                    "key=demo:601439739@qq.com:743d76bd0107bdda259b1ca19b0cb79456070bb2f0c4d57a89&" +
+                    "url=http://teamcore.arcplus-99.com/wopi/files/majorDetail/downloadOtherType?gitlabId=" +
+                    gitlabId + "&commitId=" + commitId + "&fileFullPath=" + filePath + "&branchName=design");
+
+        }
+
         items.get(0).setValue("文件级");
-        items.get(1).setValue("载体");
-        items.get(2).setValue("M");
-        items.get(3).setValue(null);
+        items.get(1).setValue("电子");
+
         items.get(4).setValue("pdf");
         items.get(5).setValue(null);
         items.get(6).setValue("pdf reader");
@@ -73,15 +126,15 @@ public class PrintWithItem {
         items.get(22).setValue(subProjectDetail.getName());
         items.get(23).setValue(subProjectDetail.getStageName());
         items.get(24).setValue(majorDetail.getStageName());
-        items.get(25).setValue(null);
+        items.get(25).setValue(dpsAllProjectV.getOuName());
         items.get(26).setValue(projectApply.getConstructionDepartment());
         items.get(27).setValue(null);
         items.get(28).setValue(majorPlanning.getDwgNo());
         items.get(29).setValue(majorPlanning.getDwgName());
-        items.get(30).setValue(null);
+
         items.get(31).setValue(null);
-        items.get(32).setValue(null);
-        items.get(33).setValue(null);
+
+        items.get(33).setValue(majorPlanning.getSignedFilePath());
         items.get(34).setValue(majorPlanning.getDwgFrame());
         items.get(35).setValue(majorPlanning.getScale());
         items.get(36).setValue(majorPlanning.getDesigner());
@@ -91,13 +144,54 @@ public class PrintWithItem {
         items.get(40).setValue(majorPlanning.getChecker());
         items.get(41).setValue(majorPlanning.getMajorPrincipal());
         items.get(42).setValue(majorPlanning.getChiefDesigner());
-        items.get(43).setValue(null);
-        items.get(44).setValue(null);
+
+        Date signDate = majorDetail.getSignDate();
+        if (StringUtils.isEmpty(signDate)) {
+            items.get(43).setValue(null);
+        } else {
+            items.get(43).setValue(sdf.format(signDate));
+        }
+        String dwg_name = dwgFrameInformation.getName();
+        if(dwg_name.substring(dwg_name.length()-1) == "竖"){
+            items.get(44).setValue("竖");
+        }
+        else{
+            items.get(44).setValue("横");
+        }
         items.get(45).setValue(null);
         items.get(46).setValue(null);
-        items.get(47).setValue(null);
+        if (null == projectAndProcess) {
+            items.get(47).setValue(null);
+        } else {
+            String memo = projectAndProcess.getMemo();
+            items.get(47).setValue(memo);
 
-        return this.items;
+        }
+
+
+        /**
+         * 填充actionMetaItem链表
+         */
+        actionMetaItems = new ArrayList<>();
+        List<ActHiTaskinst> actHiTaskinstRepositoryAll = actHiTaskinstRepository.findAll();
+        for (int i = 0; i <actHiTaskinstRepositoryAll.size(); i++) {
+
+            ActHiTaskinst actHiTaskinst = actHiTaskinstRepositoryAll.get(i);
+
+            ActionMetaItem actionMetaItem = new ActionMetaItem();
+
+            //TODO
+//            actionMetaItem.setActionType();
+//            actionMetaItem.setChargePersonPositon();
+//            actionMetaItem.setChargePersonName();
+//            actionMetaItem.setChargePersonIp();
+//            actionMetaItem.setProcessOccurrenceTime();
+//            actionMetaItem.setProcessOrder();
+//            actionMetaItem.setProcessingState();
+
+            actionMetaItems.add(actionMetaItem);
+
+        }
 
     }
 }
