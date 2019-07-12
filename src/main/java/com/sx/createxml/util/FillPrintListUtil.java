@@ -93,9 +93,8 @@ public class FillPrintListUtil {
             DwgFrameInformation dwgFrameInformation =
                     dwgFrameInformationRepository.findByNameAndGroupName(dwgFrame,groupName);
 
-            List<MetaItem> all1 = metaItemRepository.findAll();
             printWithItem.fillMetaItems(majorPlanning, majorDetail, subProjectDetail, projectApply,
-                    dpsAllProjectV, projectAndProcess,dwgFrameInformation,all1);
+                    dpsAllProjectV, projectAndProcess,dwgFrameInformation);
 
 
             //把填好的print放进prints(list)

@@ -27,15 +27,16 @@ public class PrintWithItem {
 
     private  Integer printId;
     private List<MetaItem> items;
+    private List<ProcessLog> logs;
 
-    public List<MetaItem>fillMetaItems(MajorPlanning majorPlanning, MajorDetail majorDetail,
+    public void fillMetaItems(MajorPlanning majorPlanning, MajorDetail majorDetail,
                                        SubProjectDetail subProjectDetail,
                                        ProjectApply projectApply, DpsAllProjectV dpsAllProjectV,
                                        ProjectAndProcess projectAndProcess,
-                                       DwgFrameInformation dwgFrameInformation,
-                                       List<MetaItem> items) {
-        return filleItems(majorPlanning, majorDetail, subProjectDetail, projectApply,dpsAllProjectV,
-                projectAndProcess,dwgFrameInformation,items);
+                                       DwgFrameInformation dwgFrameInformation) {
+
+        this.filleItems(majorPlanning, majorDetail, subProjectDetail, projectApply,dpsAllProjectV,
+                projectAndProcess,dwgFrameInformation);
 
     }
     public PrintWithItem() {
@@ -60,12 +61,11 @@ public class PrintWithItem {
         this.printId = printId;
     }
 
-    private List<MetaItem> filleItems(MajorPlanning majorPlanning, MajorDetail majorDetail,
+    private void filleItems(MajorPlanning majorPlanning, MajorDetail majorDetail,
                                       SubProjectDetail subProjectDetail,
                                       ProjectApply projectApply, DpsAllProjectV dpsAllProjectV,
                                       ProjectAndProcess projectAndProcess,
-                                      DwgFrameInformation dwgFrameInformation,List<MetaItem> items) {
-        this.items = items;
+                                      DwgFrameInformation dwgFrameInformation) {
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         // 数据库2,3,30，文件大小，大小单位，版次
         String gitlabId = majorDetail.getGitlabId();
@@ -159,7 +159,18 @@ public class PrintWithItem {
 
         }
 
-        return this.items;
+        for (int i = 0; i < logs.size(); i++) {
+            ProcessLog processLog = logs.get(i);
+            ActionMetaItem actionMetaItem = processLog.getActionMetaItem();
+//            actionMetaItem.setActionType();
+//            actionMetaItem.setChargePersonPositon();
+//            actionMetaItem.setChargePersonName();
+//            actionMetaItem.setChargePersonIp();
+//            actionMetaItem.setProcessOccurrenceTime();
+//            actionMetaItem.setProcessOrder();
+//            actionMetaItem.setProcessingState();
+
+        }
 
     }
 }
