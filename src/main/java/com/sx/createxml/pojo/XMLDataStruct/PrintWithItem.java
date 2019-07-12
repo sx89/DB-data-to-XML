@@ -6,10 +6,11 @@ import com.sx.createxml.pojo.oracleEBM.DpsAllProjectV;
 import com.sx.createxml.service.teamcore.ITeamcoreService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.util.StringUtils;
 
-import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
@@ -69,8 +70,14 @@ public class PrintWithItem {
         // 数据库2,3,30，文件大小，大小单位，版次
         String gitlabId = majorDetail.getGitlabId();
         String filePath = majorPlanning.getFilePath();
-        Map<String,Object> result =
-                teamcoreService.getFileSizeAndVersion(Long.valueOf(gitlabId),filePath);
+        if (StringUtils.isEmpty(filePath)) {
+            items.get(2).setValue(null);
+            items.get(3).setValue(null);
+            items.get(30).setValue(null);
+            items.get(32).setValue(null);
+        } else {
+            Map<String, Object> result =
+                    teamcoreService.getFileSizeAndVersion(Long.valueOf(gitlabId), filePath);
             Map<String,Object> ans = (Map<String,Object>)result.get("result");
             String size = (String)ans.get("size");
             int version = (int)ans.get("version");
@@ -79,6 +86,12 @@ public class PrintWithItem {
             items.get(2).setValue(size.substring(index+1));
             items.get(3).setValue(size.substring(0,index));
             items.get(30).setValue(String.valueOf(version));
+            items.get(32).setValue("http://webviewer.arcplus-99.com:3010/samples/viewing/viewing/index.html?" +
+                    "key=demo:601439739@qq.com:743d76bd0107bdda259b1ca19b0cb79456070bb2f0c4d57a89&" +
+                    "url=http://teamcore.arcplus-99.com/wopi/files/majorDetail/downloadOtherType?gitlabId=" +
+                    gitlabId + "&commitId=" + commitId + "&fileFullPath=" + filePath + "&branchName=design");
+
+        }
 
         items.get(0).setValue("文件级");
         items.get(1).setValue("电子");
@@ -111,10 +124,7 @@ public class PrintWithItem {
         items.get(29).setValue(majorPlanning.getDwgName());
 
         items.get(31).setValue(null);
-        items.get(32).setValue("http://webviewer.arcplus-99.com:3010/samples/viewing/viewing/index.html?" +
-                "key=demo:601439739@qq.com:743d76bd0107bdda259b1ca19b0cb79456070bb2f0c4d57a89&" +
-                "url=http://teamcore.arcplus-99.com/wopi/files/majorDetail/downloadOtherType?gitlabId=" +
-                gitlabId+"&commitId="+commitId+"&fileFullPath="+filePath+"&branchName=design");
+
         items.get(33).setValue(majorPlanning.getSignedFilePath());
         items.get(34).setValue(majorPlanning.getDwgFrame());
         items.get(35).setValue(majorPlanning.getScale());
@@ -125,7 +135,13 @@ public class PrintWithItem {
         items.get(40).setValue(majorPlanning.getChecker());
         items.get(41).setValue(majorPlanning.getMajorPrincipal());
         items.get(42).setValue(majorPlanning.getChiefDesigner());
-        items.get(43).setValue(sdf.format(majorDetail.getSignDate()));
+
+        Date signDate = majorDetail.getSignDate();
+        if (StringUtils.isEmpty(signDate)) {
+            items.get(43).setValue(null);
+        } else {
+            items.get(43).setValue(sdf.format(signDate));
+        }
         String dwg_name = dwgFrameInformation.getName();
         if(dwg_name.substring(dwg_name.length()-1) == "竖"){
             items.get(44).setValue("竖");
@@ -135,7 +151,13 @@ public class PrintWithItem {
         }
         items.get(45).setValue(null);
         items.get(46).setValue(null);
-        items.get(47).setValue(projectAndProcess.getMemo());
+        if (null == projectAndProcess) {
+            items.get(47).setValue(null);
+        } else {
+            String memo = projectAndProcess.getMemo();
+            items.get(47).setValue(memo);
+
+        }
 
         return this.items;
 

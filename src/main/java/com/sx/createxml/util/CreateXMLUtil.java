@@ -23,7 +23,7 @@ import java.util.List;
 public class CreateXMLUtil {
     public static ArrayList<CreateXMLResult> createXMLByDOM(String destFolerPath, List<PrintWithItem> prints) {
         // 创建DocumentBuilderFactory
-        ArrayList<CreateXMLResult> list_Result = new ArrayList<CreateXMLResult>();
+        ArrayList<CreateXMLResult> listResult = new ArrayList<CreateXMLResult>();
         for (int j = 0; j < prints.size(); j++) {
             PrintWithItem printWithItem = prints.get(j);
             List<MetaItem> items = printWithItem.getItems();
@@ -187,7 +187,7 @@ public class CreateXMLUtil {
                 createXMLResult.setCreatePath(createPath);
 
                 createXMLResult.setPrintId(printWithItem.getPrintId());
-                list_Result.add(createXMLResult);
+                listResult.add(createXMLResult);
 
             } catch (ParserConfigurationException e) {
                 e.printStackTrace();
@@ -198,6 +198,6 @@ public class CreateXMLUtil {
             }
         }
 
-        return list_Result;
+        return listResult;
     }
 }
