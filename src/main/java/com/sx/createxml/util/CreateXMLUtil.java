@@ -1,6 +1,7 @@
 package com.sx.createxml.util;
 
 import com.sx.createxml.pojo.CreateXMLResult;
+import com.sx.createxml.pojo.XMLDataStruct.ActionMetaItem;
 import com.sx.createxml.pojo.XMLDataStruct.PrintWithItem;
 import com.sx.createxml.pojo.mysql.MetaItem;
 import org.springframework.util.StringUtils;
@@ -16,6 +17,7 @@ import javax.xml.transform.stream.StreamResult;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
+
 /**
  * @author sunxu93@163.com
  * @date 19/7/8/008 16:42
@@ -23,10 +25,11 @@ import java.util.List;
 public class CreateXMLUtil {
     public static ArrayList<CreateXMLResult> createXMLByDOM(String destFolerPath, List<PrintWithItem> prints) {
         // 创建DocumentBuilderFactory
-        ArrayList<CreateXMLResult> listResult = new ArrayList<CreateXMLResult>();
+        ArrayList<CreateXMLResult> listResult = new ArrayList<>();
         for (int j = 0; j < prints.size(); j++) {
             PrintWithItem printWithItem = prints.get(j);
             List<MetaItem> items = printWithItem.getItems();
+            List<ActionMetaItem> actionMetaItems = printWithItem.getActionMetaItems();
             DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
             try {
 
@@ -156,6 +159,80 @@ public class CreateXMLUtil {
                     // 为根节点添加子节点
                     root.appendChild(metaItem);
                 }
+
+                Element logs = document.createElement("logs");
+                //book.setAttribute("id", "1");
+
+                // TODO 每一个item需要一个循环
+                if(actionMetaItems!=null) {
+                    for (int k = 0; k < actionMetaItems.size(); k++) {
+                        Element item = document.createElement("item");
+
+                        Element opttype = document.createElement("opttype");
+                        String opttype1 = actionMetaItems.get(k).getActionType();
+                        if (StringUtils.isEmpty(opttype1)) {
+                            opttype1 = "null";
+                        }
+                        opttype.setTextContent(opttype1);
+                        item.appendChild(opttype);
+
+                        Element duty = document.createElement("duty");
+                        String duty1 = actionMetaItems.get(k).getChargePersonPosition();
+                        if (StringUtils.isEmpty(duty1)) {
+                            duty1 = "null";
+                        }
+                        duty.setTextContent(duty1);
+                        item.appendChild(duty);
+
+                        Element author = document.createElement("author");
+                        String author1 = actionMetaItems.get(k).getChargePersonName();
+                        if (StringUtils.isEmpty(author1)) {
+                            author1 = "null";
+                        }
+                        author.setTextContent(author1);
+                        item.appendChild(author);
+
+                        Element optIP = document.createElement("optIP");
+                        String optIP1 = actionMetaItems.get(k).getChargePersonIp();
+                        if (StringUtils.isEmpty(optIP1)) {
+                            optIP1 = "null";
+                        }
+                        optIP.setTextContent(optIP1);
+                        item.appendChild(optIP);
+
+                        Element createtime = document.createElement("createtime");
+                        String createtime1 = actionMetaItems.get(k).getProcessOccurrenceTime();
+                        if (StringUtils.isEmpty(createtime1)) {
+                            createtime1 = "null";
+                        }
+                        createtime.setTextContent(createtime1);
+                        item.appendChild(createtime);
+
+                        Element optnumber = document.createElement("optnumber");
+                        String optnumber1 = actionMetaItems.get(k).getProcessOrder();
+                        if (StringUtils.isEmpty(optnumber1)) {
+                            optnumber1 = "null";
+                        }
+                        optnumber.setTextContent(optnumber1);
+                        item.appendChild(optnumber);
+
+                        Element remark = document.createElement("remark");
+                        String remark1 = actionMetaItems.get(k).getProcessingState();
+                        if (StringUtils.isEmpty(remark1)) {
+                            remark1 = "null";
+                        }
+                        remark.setTextContent(remark1);
+                        item.appendChild(remark);
+
+                        logs.appendChild(item);
+                    }
+                }else {
+                    logs.setTextContent("null");
+
+                }
+                root.appendChild(logs);
+
+
                 // 将根节点添加到Document下
                 document.appendChild(root);
 

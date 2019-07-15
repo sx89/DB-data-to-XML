@@ -40,7 +40,8 @@ public class FillPrintListUtil {
     ProjectAndProcessRepository projectAndProcessRepository;
     @Autowired
     DwgFrameInformationRepository dwgFrameInformationRepository;
-
+    @Autowired
+    FillMetaItemsUtil fillMetaItemsUtil;
     public ArrayList<PrintWithItem> createPrint4XMLList() {
         //构造所有print的数组
 
@@ -51,8 +52,8 @@ public class FillPrintListUtil {
         all.forEach(dtDocumentInfo -> {
             printIds.add(Integer.parseInt(dtDocumentInfo.getMainid()));
         });
-        //对print数组进行遍历,然后返回一个printList供生成xml的函数调用
         for (int i = 0; i < printIds.size(); i++) {
+        //对print数组进行遍历,然后返回一个printList供生成xml的函数调用
 
             //对每一个oracle中的图纸id都从mysql三个表里找数剧
             Integer idInt = printIds.get(i);
@@ -93,10 +94,8 @@ public class FillPrintListUtil {
             DwgFrameInformation dwgFrameInformation =
                     dwgFrameInformationRepository.findByNameAndGroupName(dwgFrame,groupName);
 
-            printWithItem.fillMetaItems(majorPlanning, majorDetail, subProjectDetail, projectApply,
-                    dpsAllProjectV, projectAndProcess,dwgFrameInformation);
-
-
+            fillMetaItemsUtil.fillMetaItems(majorPlanning, majorDetail, subProjectDetail, projectApply,
+                    dpsAllProjectV, projectAndProcess,dwgFrameInformation,printWithItem);
             //把填好的print放进prints(list)
             prints.add(printWithItem);
 

@@ -48,6 +48,14 @@ public class PrimaryConfig {
         ret.put("hibernate.dialect", "org.hibernate.dialect.MySQL5Dialect");
         ret.put("hibernate.hbm2ddl.auto","update");
         ret.put("spring.jpa.hibernate.naming-strategy","org.hibernate.cfg.ImprovedNamingStrategy");
+
+//        ret.put("spring.jpa.hibernate.naming.physical-strategy",
+//                "org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl");
+//
+//        ret.put("hibernate.naming-strategy","org.hibernate.cfg.DefaultNamingStrategy");
+        //参考博客https://www.cnblogs.com/sxdcgaq8080/p/7910474.html  版本不同,策略名称也不同
+//        ret.put("hibernate.naming.physical-strategy",
+//                "org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl");
         return ret;
     }
 

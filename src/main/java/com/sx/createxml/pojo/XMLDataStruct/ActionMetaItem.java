@@ -12,7 +12,7 @@ public class ActionMetaItem {
     /**
      * 行为责任人职责
      */
-    private String chargePersonPositon;
+    private String chargePersonPosition;
     /**
      * 行为责任者
      */
@@ -37,9 +37,9 @@ public class ActionMetaItem {
     public ActionMetaItem() {
     }
 
-    public ActionMetaItem(String actionType, String chargePersonPositon, String chargePersonName, String chargePersonIp, String processOccurrenceTime, String processOrder, String processingState) {
+    public ActionMetaItem(String actionType, String chargePersonPosition, String chargePersonName, String chargePersonIp, String processOccurrenceTime, String processOrder, String processingState) {
         this.actionType = actionType;
-        this.chargePersonPositon = chargePersonPositon;
+        this.chargePersonPosition = chargePersonPosition;
         this.chargePersonName = chargePersonName;
         this.chargePersonIp = chargePersonIp;
         this.processOccurrenceTime = processOccurrenceTime;
@@ -55,12 +55,12 @@ public class ActionMetaItem {
         this.actionType = actionType;
     }
 
-    public String getChargePersonPositon() {
-        return chargePersonPositon;
+    public String getChargePersonPosition() {
+        return chargePersonPosition;
     }
 
-    public void setChargePersonPositon(String chargePersonPositon) {
-        this.chargePersonPositon = chargePersonPositon;
+    public void setChargePersonPosition(String chargePersonPosition) {
+        this.chargePersonPosition = chargePersonPosition;
     }
 
     public String getChargePersonName() {

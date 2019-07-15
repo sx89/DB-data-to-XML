@@ -3,6 +3,8 @@ package com.sx.createxml.dao.repository;
 import com.sx.createxml.pojo.mysql.MetaItem;
 import org.springframework.data.jpa.repository.JpaRepository;
 
+import java.lang.reflect.Array;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -11,7 +13,7 @@ import java.util.List;
  */
 public interface MetaItemRepository extends JpaRepository<MetaItem, Integer> {
     @Override
-    List<MetaItem> findAll() ;
+    ArrayList<MetaItem> findAll() ;
 
    MetaItem getById(Integer id);
 
