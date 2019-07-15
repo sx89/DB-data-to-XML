@@ -34,6 +34,7 @@ public class PrintWithItem {
 
     private  Integer printId;
     private List<MetaItem> items;
+
     private List<ActionMetaItem> actionMetaItems;
 
     public void fillMetaItems(MajorPlanning majorPlanning, MajorDetail majorDetail,
@@ -56,6 +57,7 @@ public class PrintWithItem {
         return this.items;
     }
 
+
     public void setItems(ArrayList<MetaItem> items) {
         this.items = items;
     }
@@ -69,11 +71,19 @@ public class PrintWithItem {
         this.printId = printId;
     }
 
+    public List<ActionMetaItem> getActionMetaItems() {
+        return actionMetaItems;
+    }
+
+    public void setActionMetaItems(List<ActionMetaItem> actionMetaItems) {
+        this.actionMetaItems = actionMetaItems;
+    }
+
     private void filleItems(MajorPlanning majorPlanning, MajorDetail majorDetail,
-                                      SubProjectDetail subProjectDetail,
-                                      ProjectApply projectApply, DpsAllProjectV dpsAllProjectV,
-                                      ProjectAndProcess projectAndProcess,
-                                      DwgFrameInformation dwgFrameInformation) {
+                            SubProjectDetail subProjectDetail,
+                            ProjectApply projectApply, DpsAllProjectV dpsAllProjectV,
+                            ProjectAndProcess projectAndProcess,
+                            DwgFrameInformation dwgFrameInformation) {
 
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         // 数据库2,3,30，文件大小，大小单位，版次
