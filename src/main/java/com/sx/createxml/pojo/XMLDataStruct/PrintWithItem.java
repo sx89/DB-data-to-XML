@@ -168,26 +168,36 @@ public class PrintWithItem {
 
         }
 
-
         /**
          * 填充actionMetaItem链表
          */
+        String processId = majorPlanning.getProcessId();
         actionMetaItems = new ArrayList<>();
-        List<ActHiTaskinst> actHiTaskinstRepositoryAll = actHiTaskinstRepository.findAll();
+        List<ActHiTaskinst> actHiTaskinstRepositoryAll = actHiTaskinstRepository.getByProcInstId(processId);
         for (int i = 0; i <actHiTaskinstRepositoryAll.size(); i++) {
 
             ActHiTaskinst actHiTaskinst = actHiTaskinstRepositoryAll.get(i);
 
             ActionMetaItem actionMetaItem = new ActionMetaItem();
 
-            //TODO
-//            actionMetaItem.setActionType();
-//            actionMetaItem.setChargePersonPositon();
-//            actionMetaItem.setChargePersonName();
-//            actionMetaItem.setChargePersonIp();
-//            actionMetaItem.setProcessOccurrenceTime();
-//            actionMetaItem.setProcessOrder();
-//            actionMetaItem.setProcessingState();
+            String actType = actHiTaskinst.getActName();
+            actionMetaItem.setActionType(actType);
+
+            String actChargePersonPosition = null;
+            if (StringUtils.isEmpty(actType)) {
+                String substring = actType.substring(actType.length() - 2, 2);
+                if (substring.equals("人")) {
+                    actChargePersonPosition = actType;
+                }else {
+                    actChargePersonPosition = actType + "人";
+                }
+            }
+            actionMetaItem.setChargePersonPosition(actChargePersonPosition);
+            actionMetaItem.setChargePersonName(actHiTaskinst.getAssignee());
+            actionMetaItem.setChargePersonIp(null);
+            actionMetaItem.setProcessOccurrenceTime(actHiTaskinst.getEndTime());
+            actionMetaItem.setProcessOrder("1");
+            actionMetaItem.setProcessingState("同意");
 
             actionMetaItems.add(actionMetaItem);
 

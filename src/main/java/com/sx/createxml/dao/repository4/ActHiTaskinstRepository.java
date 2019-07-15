@@ -18,4 +18,6 @@ public interface ActHiTaskinstRepository extends JpaRepository<ActHiTaskinst, St
 
     ActHiTaskinst getById(String id);
 
+    List<ActHiTaskinst> getByProcInstId(String procInstId);
+
 }
