@@ -1,5 +1,106 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <root>
+<logs>
+<item>
+<opttype>校对</opttype>
+<duty>校对人</duty>
+<author>徐旻洋(18453)</author>
+<optIP>null</optIP>
+<createtime>2019-04-15 06:17:29.925</createtime>
+<optnumber>1</optnumber>
+<remark>同意</remark>
+</item>
+<item>
+<opttype>审核</opttype>
+<duty>审核人</duty>
+<author>徐旻洋(18453)</author>
+<optIP>null</optIP>
+<createtime>2019-04-15 06:17:33.032</createtime>
+<optnumber>1</optnumber>
+<remark>同意</remark>
+</item>
+<item>
+<opttype>审定</opttype>
+<duty>审定人</duty>
+<author>徐旻洋(18453)</author>
+<optIP>null</optIP>
+<createtime>2019-04-15 06:17:35.728</createtime>
+<optnumber>1</optnumber>
+<remark>同意</remark>
+</item>
+<item>
+<opttype>设总</opttype>
+<duty>设总人</duty>
+<author>徐旻洋(18453)</author>
+<optIP>null</optIP>
+<createtime>2019-04-15 06:17:38.371</createtime>
+<optnumber>1</optnumber>
+<remark>同意</remark>
+</item>
+<item>
+<opttype>创建人</opttype>
+<duty>创建人</duty>
+<author>张壹凯(10374)</author>
+<optIP>null</optIP>
+<createtime>2019-04-15 06:17:17.504</createtime>
+<optnumber>1</optnumber>
+<remark>同意</remark>
+</item>
+<item>
+<opttype>null</opttype>
+<duty>null</duty>
+<author>null</author>
+<optIP>null</optIP>
+<createtime>2019-04-15 06:17:38.374</createtime>
+<optnumber>1</optnumber>
+<remark>同意</remark>
+</item>
+<item>
+<opttype>null</opttype>
+<duty>null</duty>
+<author>null</author>
+<optIP>null</optIP>
+<createtime>2019-04-15 06:17:29.93</createtime>
+<optnumber>1</optnumber>
+<remark>同意</remark>
+</item>
+<item>
+<opttype>null</opttype>
+<duty>null</duty>
+<author>null</author>
+<optIP>null</optIP>
+<createtime>2019-04-15 06:17:33.037</createtime>
+<optnumber>1</optnumber>
+<remark>同意</remark>
+</item>
+<item>
+<opttype>null</opttype>
+<duty>null</duty>
+<author>null</author>
+<optIP>null</optIP>
+<createtime>2019-04-15 06:17:35.732</createtime>
+<optnumber>1</optnumber>
+<remark>同意</remark>
+</item>
+<item>
+<opttype>null</opttype>
+<duty>null</duty>
+<author>null</author>
+<optIP>null</optIP>
+<createtime>2019-04-15 06:17:38.374</createtime>
+<optnumber>1</optnumber>
+<remark>同意</remark>
+</item>
+<item>
+<opttype>图纸审批申请</opttype>
+<duty>图纸审批申请人</duty>
+<author>null</author>
+<optIP>null</optIP>
+<createtime>2019-04-15 06:17:17.34</createtime>
+<optnumber>1</optnumber>
+<remark>同意</remark>
+</item>
+</logs>
 <metaItem>
 <name>文件层级</name>
 <key>level</key>
@@ -670,6 +771,6 @@
 <method>自动</method>
 <range>/</range>
 <notation>null</notation>
-<value>图纸审批申请</value>
+<value>null</value>
 </metaItem>
 </root>

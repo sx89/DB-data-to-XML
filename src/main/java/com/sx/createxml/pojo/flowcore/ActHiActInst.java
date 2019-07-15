@@ -3,6 +3,7 @@ package com.sx.createxml.pojo.flowcore;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
+import java.math.BigInteger;
 import java.util.Objects;
 
 /**
@@ -11,19 +12,19 @@ import java.util.Objects;
  */
 
 @Entity
-@Table(name = "ACT_HI_TASKINST")
-public class ActHiTaskinst {
+@Table(name = "ACT_HI_ACTINST")
+public class ActHiActInst {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "ID_")
     private String id;
 
     @Column(name = "PROC_DEF_ID_")
-    private Long procDefId;
+    private String procDefId;
     @Column(name = "PROC_INST_ID_")
-    private Long procInstId;
+    private String procInstId;
     @Column(name = "EXECUTION_ID_")
-    private Long executionId;
+    private String executionId;
     @Column(name = "ACT_ID_")
     private String actId;
     @Column(name = "TASK_ID_")
@@ -46,12 +47,12 @@ public class ActHiTaskinst {
     private String endTime;
 
     @Column(name = "DURATION_")
-    private String duration;
+    private BigInteger duration;
 
     @Column(name = "TENANT_ID_")
     private String tenantId;
 
-    public ActHiTaskinst() {
+    public ActHiActInst() {
     }
 
     public String getId() {
@@ -62,27 +63,27 @@ public class ActHiTaskinst {
         this.id = id;
     }
 
-    public Long getProcDefId() {
+    public String getProcDefId() {
         return procDefId;
     }
 
-    public void setProcDefId(Long procDefId) {
+    public void setProcDefId(String procDefId) {
         this.procDefId = procDefId;
     }
 
-    public Long getProcInstId() {
+    public String getProcInstId() {
         return procInstId;
     }
 
-    public void setProcInstId(Long procInstId) {
+    public void setProcInstId(String procInstId) {
         this.procInstId = procInstId;
     }
 
-    public Long getExecutionId() {
+    public String getExecutionId() {
         return executionId;
     }
 
-    public void setExecutionId(Long executionId) {
+    public void setExecutionId(String executionId) {
         this.executionId = executionId;
     }
 
@@ -150,11 +151,11 @@ public class ActHiTaskinst {
         this.endTime = endTime;
     }
 
-    public String getDuration() {
+    public BigInteger getDuration() {
         return duration;
     }
 
-    public void setDuration(String duration) {
+    public void setDuration(BigInteger duration) {
         this.duration = duration;
     }
 
@@ -164,52 +165,6 @@ public class ActHiTaskinst {
 
     public void setTenantId(String tenantId) {
         this.tenantId = tenantId;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        ActHiTaskinst that = (ActHiTaskinst) o;
-        return Objects.equals(id, that.id) &&
-                Objects.equals(procDefId, that.procDefId) &&
-                Objects.equals(procInstId, that.procInstId) &&
-                Objects.equals(executionId, that.executionId) &&
-                Objects.equals(actId, that.actId) &&
-                Objects.equals(taskId, that.taskId) &&
-                Objects.equals(callProcInstId, that.callProcInstId) &&
-                Objects.equals(actName, that.actName) &&
-                Objects.equals(actType, that.actType) &&
-                Objects.equals(assignee, that.assignee) &&
-                Objects.equals(startTime, that.startTime) &&
-                Objects.equals(endTime, that.endTime) &&
-                Objects.equals(duration, that.duration) &&
-                Objects.equals(tenantId, that.tenantId);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(id, procDefId, procInstId, executionId, actId, taskId, callProcInstId, actName, actType, assignee, startTime, endTime, duration, tenantId);
-    }
-
-    @Override
-    public String toString() {
-        return "ActHiTaskinst{" +
-                "id=" + id +
-                ", procDefId=" + procDefId +
-                ", procInstId=" + procInstId +
-                ", executionId=" + executionId +
-                ", actId='" + actId + '\'' +
-                ", taskId='" + taskId + '\'' +
-                ", callProcInstId='" + callProcInstId + '\'' +
-                ", actName='" + actName + '\'' +
-                ", actType='" + actType + '\'' +
-                ", assignee='" + assignee + '\'' +
-                ", startTime='" + startTime + '\'' +
-                ", endTime='" + endTime + '\'' +
-                ", duration='" + duration + '\'' +
-                ", tenantId='" + tenantId + '\'' +
-                '}';
     }
 }
 
