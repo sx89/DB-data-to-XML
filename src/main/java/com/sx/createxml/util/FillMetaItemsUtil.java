@@ -74,9 +74,9 @@ public class FillMetaItemsUtil {
         } else {
             Map<String, Object> result =
                     teamcoreService.getFileSizeAndVersion(Long.valueOf(gitlabId), filePath);
-            Map<String, Object> ans = (Map<String, Object>) result.get("result");
+            Map<String, Object> ans = (Map<String, Object>) result.get("content");
             String size = (String) ans.get("size");
-            int version = (int) ans.get("version");
+            double version = (Double) ans.get("version");
             String commitId = (String) ans.get("commitId");
             int index = size.indexOf(" ");
             items.get(2).setValue(size.substring(index + 1));
@@ -87,7 +87,7 @@ public class FillMetaItemsUtil {
                     "url=http://teamcore.arcplus-99.com/wopi/files/majorDetail/downloadOtherType?gitlabId=" +
                     gitlabId + "&commitId=" + commitId + "&fileFullPath=" + filePath + "&branchName=design");
 
-            String[] split = filePath.split(".");
+            String[] split = filePath.split("\\.");
             String fileType = split[split.length - 1];
             items.get(4).setValue(fileType);
             items.get(6).setValue(fileType + "创建程序");
@@ -119,7 +119,7 @@ public class FillMetaItemsUtil {
         items.get(21).setValue(projectApply.getName());
         items.get(22).setValue(subProjectDetail.getName());
         items.get(23).setValue(subProjectDetail.getStageName());
-        items.get(24).setValue(majorDetail.getStageName());
+        items.get(24).setValue(majorDetail.getMajorName());
         items.get(25).setValue(dpsAllProjectV.getOuName());
         items.get(26).setValue(projectApply.getConstructionDepartment());
         items.get(27).setValue(null);
@@ -188,7 +188,7 @@ public class FillMetaItemsUtil {
                     actChargePersonPosition = "设总";
                 } else if ("创建人".equals(actType)) {
                     actType = "申请";
-
+                    actChargePersonPosition = "创建人";
                 } else {
                     String substring = actType.substring(actType.length() - 1);
 

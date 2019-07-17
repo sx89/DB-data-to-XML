@@ -251,7 +251,7 @@ public class CreateXMLUtil {
                 //TODO 如果文件夹不存在 要创建       文件路径再学习
                 //创建文件的传输路径
                 if (StringUtils.isEmpty(destFolerPath)) {
-                    destFolerPath = "xmls/";
+                    destFolerPath = "C:\\Users\\xiaolong-ji\\Desktop\\xmls\\";
                 }
                 //创建路径不要用中文
                 String createPath = destFolerPath + printWithItem.getPrintId() + ".xml";
