@@ -61,12 +61,16 @@ public class FillMetaItemsUtil {
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         // 数据库2,3,30，文件大小，大小单位，版次
         String gitlabId = majorDetail.getGitlabId();
+
         String filePath = majorPlanning.getFilePath();
         if (StringUtils.isEmpty(filePath)) {
             items.get(2).setValue(null);
             items.get(3).setValue(null);
             items.get(30).setValue(null);
             items.get(32).setValue(null);
+            items.get(4).setValue(null);
+            items.get(6).setValue(null);
+
         } else {
             Map<String, Object> result =
                     teamcoreService.getFileSizeAndVersion(Long.valueOf(gitlabId), filePath);
@@ -83,14 +87,21 @@ public class FillMetaItemsUtil {
                     "url=http://teamcore.arcplus-99.com/wopi/files/majorDetail/downloadOtherType?gitlabId=" +
                     gitlabId + "&commitId=" + commitId + "&fileFullPath=" + filePath + "&branchName=design");
 
+            String[] split = filePath.split(".");
+            String fileType = split[split.length - 1];
+            items.get(4).setValue(fileType);
+            items.get(6).setValue(fileType + "创建程序");
         }
 
         items.get(0).setValue("文件级");
         items.get(1).setValue("电子");
 
-        items.get(4).setValue("pdf");
+
+
         items.get(5).setValue(null);
-        items.get(6).setValue("pdf reader");
+
+
+
         items.get(7).setValue(null);
         items.get(8).setValue(null);
         items.get(9).setValue(majorPlanning.getSubProjectId().toString());
@@ -115,7 +126,7 @@ public class FillMetaItemsUtil {
         items.get(28).setValue(majorPlanning.getDwgNo());
         items.get(29).setValue(majorPlanning.getDwgName());
 
-        items.get(31).setValue(null);
+        items.get(31).setValue(majorDetail.getMajorName());
 
         items.get(33).setValue(majorPlanning.getSignedFilePath());
         items.get(34).setValue(majorPlanning.getDwgFrame());
@@ -165,34 +176,50 @@ public class FillMetaItemsUtil {
             ActionMetaItem actionMetaItem = new ActionMetaItem();
 
             String actType = actHiActInst.getActName();
-            actionMetaItem.setActionType(actType);
+
 
             String actChargePersonPosition = null;
-            if (!StringUtils.isEmpty(actType)) {
+            //TODO 有的log.item 里面除了1和 同意  其他信息全是null,需要进行修改,
+
+
+            if ((!StringUtils.isEmpty(actType)) && !("图纸审批申请".equals(actType))) {
+                if ("设总".equals(actType)) {
+                    actType = "审批";
+                    actChargePersonPosition = "设总";
+                } else if ("创建人".equals(actType)) {
+                    actType = "申请";
+
+                } else {
                     String substring = actType.substring(actType.length() - 1);
-                    if (substring.equals("人")) {
+
+                    if ("人".equals(substring)) {
                         actChargePersonPosition = actType;
                     } else {
                         actChargePersonPosition = actType + "人";
+                    }
                 }
+                actionMetaItem.setActionType(actType);
+                actionMetaItem.setChargePersonPosition(actChargePersonPosition);
+                actionMetaItem.setChargePersonName(actHiActInst.getAssignee());
+                actionMetaItem.setChargePersonIp(null);
+                actionMetaItem.setProcessOccurrenceTime(actHiActInst.getEndTime());
+                actionMetaItem.setProcessOrder("1");
+                actionMetaItem.setProcessingState("同意");
 
+                actionMetaItems.add(actionMetaItem);
             }
-            actionMetaItem.setChargePersonPosition(actChargePersonPosition);
-            actionMetaItem.setChargePersonName(actHiActInst.getAssignee());
-            actionMetaItem.setChargePersonIp(null);
-            actionMetaItem.setProcessOccurrenceTime(actHiActInst.getEndTime());
-            actionMetaItem.setProcessOrder("1");
-            actionMetaItem.setProcessingState("同意");
-
-            actionMetaItems.add(actionMetaItem);
 
         }
         printWithItem.setActionMetaItems(actionMetaItems);
         }
     }
 }
+
+
 //        图纸的每个ItemValue的获取途径
 
+
+//        文件   文件层级
 //        载体	载体
 //        单位	M
 //        数量或大小

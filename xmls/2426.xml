@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <root>
-<logs>null</logs>
 <metaItem>
 <name>文件层级</name>
 <key>level</key>
@@ -69,7 +68,7 @@
 <method>自动</method>
 <range>/</range>
 <notation>电子文件格式分类</notation>
-<value>pdf</value>
+<value>null</value>
 </metaItem>
 <metaItem>
 <name>存址</name>
@@ -97,7 +96,7 @@
 <method>自动</method>
 <range>/</range>
 <notation>null</notation>
-<value>pdf reader</value>
+<value>null</value>
 </metaItem>
 <metaItem>
 <name>计算机文件名</name>
@@ -447,7 +446,7 @@
 <method>自动</method>
 <range>/</range>
 <notation>null</notation>
-<value>null</value>
+<value>室内</value>
 </metaItem>
 <metaItem>
 <name>预览文件</name>
@@ -673,4 +672,51 @@
 <notation>null</notation>
 <value>null</value>
 </metaItem>
+<logs>
+<item>
+<opttype>校对</opttype>
+<duty>校对人</duty>
+<author>蒋荣刚(jiangrg)</author>
+<optIP>null</optIP>
+<createtime>2019-04-10 12:13:16.307</createtime>
+<optnumber>1</optnumber>
+<remark>同意</remark>
+</item>
+<item>
+<opttype>审核</opttype>
+<duty>审核人</duty>
+<author>蒋荣刚(jiangrg)</author>
+<optIP>null</optIP>
+<createtime>2019-04-10 12:13:18.776</createtime>
+<optnumber>1</optnumber>
+<remark>同意</remark>
+</item>
+<item>
+<opttype>审定</opttype>
+<duty>审定人</duty>
+<author>蒋荣刚(jiangrg)</author>
+<optIP>null</optIP>
+<createtime>2019-04-10 12:13:21.45</createtime>
+<optnumber>1</optnumber>
+<remark>同意</remark>
+</item>
+<item>
+<opttype>审批</opttype>
+<duty>设总</duty>
+<author>蒋荣刚(jiangrg)</author>
+<optIP>null</optIP>
+<createtime>2019-04-10 12:13:24.43</createtime>
+<optnumber>1</optnumber>
+<remark>同意</remark>
+</item>
+<item>
+<opttype>申请</opttype>
+<duty>null</duty>
+<author>蓝转白盖章***(siadr.lzb)</author>
+<optIP>null</optIP>
+<createtime>2019-04-10 12:12:42.519</createtime>
+<optnumber>1</optnumber>
+<remark>同意</remark>
+</item>
+</logs>
 </root>

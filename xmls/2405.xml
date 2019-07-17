@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <root>
-<logs>null</logs>
 <metaItem>
 <name>文件层级</name>
 <key>level</key>
@@ -69,7 +68,7 @@
 <method>自动</method>
 <range>/</range>
 <notation>电子文件格式分类</notation>
-<value>pdf</value>
+<value>null</value>
 </metaItem>
 <metaItem>
 <name>存址</name>
@@ -97,7 +96,7 @@
 <method>自动</method>
 <range>/</range>
 <notation>null</notation>
-<value>pdf reader</value>
+<value>null</value>
 </metaItem>
 <metaItem>
 <name>计算机文件名</name>
@@ -447,7 +446,7 @@
 <method>自动</method>
 <range>/</range>
 <notation>null</notation>
-<value>null</value>
+<value>室内</value>
 </metaItem>
 <metaItem>
 <name>预览文件</name>
@@ -673,4 +672,5 @@
 <notation>null</notation>
 <value>null</value>
 </metaItem>
+<logs>null</logs>
 </root>
