@@ -1,6 +1,7 @@
 package com.sx.createxml.pojo.XMLDataStruct;
 
 import com.sx.createxml.pojo.mysql.MetaItem;
+import com.sx.createxml.pojo.mysql.PdfAnnotation;
 
 import java.util.List;
 
@@ -16,6 +17,7 @@ public class PrintWithItem {
 
     private List<ActionMetaItem> actionMetaItems;
 
+    private List<PdfAnnotation> pdfAnnotations;
 
     public PrintWithItem() {
 
@@ -43,6 +45,14 @@ public class PrintWithItem {
 
     public void setActionMetaItems(List<ActionMetaItem> actionMetaItems) {
         this.actionMetaItems = actionMetaItems;
+    }
+
+    public List<PdfAnnotation> getPdfAnnotations() {
+        return pdfAnnotations;
+    }
+
+    public void setPdfAnnotations(List<PdfAnnotation> pdfAnnotations) {
+        this.pdfAnnotations = pdfAnnotations;
     }
 }
 

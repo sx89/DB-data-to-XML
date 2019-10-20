@@ -4,6 +4,7 @@ import com.sx.createxml.pojo.CreateXMLResult;
 import com.sx.createxml.pojo.XMLDataStruct.ActionMetaItem;
 import com.sx.createxml.pojo.XMLDataStruct.PrintWithItem;
 import com.sx.createxml.pojo.mysql.MetaItem;
+import com.sx.createxml.pojo.mysql.PdfAnnotation;
 import org.springframework.util.StringUtils;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
@@ -30,6 +31,7 @@ public class CreateXMLUtil {
             PrintWithItem printWithItem = prints.get(j);
             List<MetaItem> items = printWithItem.getItems();
             List<ActionMetaItem> actionMetaItems = printWithItem.getActionMetaItems();
+            List<PdfAnnotation> pdfAnnotations = printWithItem.getPdfAnnotations();
             DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
             try {
 
@@ -232,6 +234,79 @@ public class CreateXMLUtil {
                 }
                 root.appendChild(logs);
 
+
+                Element annotations = document.createElement("pdfAnnotations");
+                //book.setAttribute("id", "1");
+
+                if(pdfAnnotations!=null) {
+                    for (int k = 0; k < pdfAnnotations.size(); k++) {
+
+
+
+                        Element annotation = document.createElement("annotation");
+
+                        Element id = document.createElement("id");
+                        String id1 = pdfAnnotations.get(k).getId().toString();
+                        if (StringUtils.isEmpty(id1)) {
+                            id1 = "null";
+                        }
+                        id.setTextContent(id1);
+                        annotation.appendChild(id);
+
+
+
+
+                        Element annotationId = document.createElement("annotationId");
+                        String annotationId1 = pdfAnnotations.get(k).getAnnotationId();
+                        if (StringUtils.isEmpty(annotationId1)) {
+                            annotationId1 = "null";
+                        }
+                        annotationId.setTextContent(annotationId1);
+                        annotation.appendChild(annotationId);
+
+                        Element author = document.createElement("author");
+                        String author1 = pdfAnnotations.get(k).getAuthor();
+                        if (StringUtils.isEmpty(author1)) {
+                            author1 = "null";
+                        }
+                        author.setTextContent(author1);
+                        annotation.appendChild(author);
+
+
+                        Element createTime = document.createElement("createTime");
+                        String createTime1 = pdfAnnotations.get(k).getCreateTime().toString();
+                        if (StringUtils.isEmpty(createTime1)) {
+                            createTime1 = "null";
+                        }
+                        createTime.setTextContent(createTime1);
+                        annotation.appendChild(createTime);
+
+                        Element updateTime = document.createElement("updateTime");
+                        String updateTime1 = pdfAnnotations.get(k).getUpdateTime().toString();
+                        if (StringUtils.isEmpty(updateTime1)) {
+                            updateTime1 = "null";
+                        }
+                        updateTime.setTextContent(updateTime1);
+                        annotation.appendChild(updateTime);
+
+
+
+
+                        Element url = document.createElement("url");
+                        String url1 = pdfAnnotations.get(k).getUrl();
+                        if (StringUtils.isEmpty(url1)) {
+                            url1 = "null";
+                        }
+                        url.setTextContent(url1);
+                        annotation.appendChild(url);
+
+                        annotations.appendChild(annotation);
+                    }
+                }else {
+                    annotations.setTextContent("null");
+
+                }
+                root.appendChild(annotations);
 
                 // 将根节点添加到Document下
                 document.appendChild(root);

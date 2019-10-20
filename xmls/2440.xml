@@ -68,7 +68,7 @@
 <method>自动</method>
 <range>/</range>
 <notation>电子文件格式分类</notation>
-<value>null</value>
+<value>md</value>
 </metaItem>
 <metaItem>
 <name>存址</name>
@@ -96,7 +96,7 @@
 <method>自动</method>
 <range>/</range>
 <notation>null</notation>
-<value>null</value>
+<value>md创建程序</value>
 </metaItem>
 <metaItem>
 <name>计算机文件名</name>
@@ -236,7 +236,7 @@
 <method>自动</method>
 <range>/</range>
 <notation>null</notation>
-<value>null</value>
+<value>README.md</value>
 </metaItem>
 <metaItem>
 <name>文件是否必归</name>
@@ -719,4 +719,5 @@
 <remark>同意</remark>
 </item>
 </logs>
+<pdfAnnotations>null</pdfAnnotations>
 </root>

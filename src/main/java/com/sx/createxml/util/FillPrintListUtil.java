@@ -11,6 +11,7 @@ import com.sx.createxml.pojo.oracle.DtDocumentInfo;
 import com.sx.createxml.pojo.oracleEBM.DpsAllProjectV;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import org.springframework.util.StringUtils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -42,6 +43,8 @@ public class FillPrintListUtil {
     DwgFrameInformationRepository dwgFrameInformationRepository;
     @Autowired
     FillMetaItemsUtil fillMetaItemsUtil;
+    @Autowired
+    PdfAnnotationRepository pdfAnnotationRepository;
     public ArrayList<PrintWithItem> createPrint4XMLList() {
         //构造所有print的数组
 
@@ -70,6 +73,9 @@ public class FillPrintListUtil {
             Long majorId = majorPlanning.getMajorId();
 
 
+            List<PdfAnnotation> pdfs = pdfAnnotationRepository.findAll();
+
+
             //从majorDetail表找数据
             MajorDetail majorDetail = majorDetailRepository.getById(majorId);
 
@@ -88,6 +94,22 @@ public class FillPrintListUtil {
 
             String groupName = majorPlanning.getGroupName();
 
+
+            String gitlabId = majorDetail.getGitlabId();
+            String signedFilePath = majorPlanning.getSignedFilePath();
+            List<PdfAnnotation> pdfAnnotations =null;
+            if (!StringUtils.isEmpty(signedFilePath)) {
+                String[] split = signedFilePath.split("\\\\");
+                String signedFileName = "";
+                if (split.length >= 1) {
+                    signedFileName = split[split.length - 1];
+                }
+               pdfAnnotations =
+                        pdfAnnotationRepository.findByGitlabIdAndSignedFilePath("%" + gitlabId + "%",
+                                "%" + signedFileName + "%");
+            }
+
+
             //从flowcore表找数据
             ProjectAndProcess projectAndProcess = projectAndProcessRepository.getByProcessId(processId);
 
@@ -95,7 +117,7 @@ public class FillPrintListUtil {
                     dwgFrameInformationRepository.findByNameAndGroupName(dwgFrame,groupName);
 
             fillMetaItemsUtil.fillMetaItems(majorPlanning, majorDetail, subProjectDetail, projectApply,
-                    dpsAllProjectV, projectAndProcess,dwgFrameInformation,printWithItem);
+                    dpsAllProjectV, projectAndProcess, dwgFrameInformation, printWithItem, pdfAnnotations);
             //把填好的print放进prints(list)
             prints.add(printWithItem);
 

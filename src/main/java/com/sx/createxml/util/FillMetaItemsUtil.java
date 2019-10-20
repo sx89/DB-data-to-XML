@@ -41,11 +41,12 @@ public class FillMetaItemsUtil {
                               SubProjectDetail subProjectDetail,
                               ProjectApply projectApply, DpsAllProjectV dpsAllProjectV,
                               ProjectAndProcess projectAndProcess,
-                              DwgFrameInformation dwgFrameInformation, PrintWithItem printWithItem) {
+                              DwgFrameInformation dwgFrameInformation, PrintWithItem printWithItem,
+                              List<PdfAnnotation> pdfAnnotations) {
 
 
         filleItems(majorPlanning, majorDetail, subProjectDetail, projectApply, dpsAllProjectV,
-                projectAndProcess, dwgFrameInformation, printWithItem);
+                projectAndProcess, dwgFrameInformation, printWithItem, pdfAnnotations);
 
     }
 
@@ -53,7 +54,8 @@ public class FillMetaItemsUtil {
                             SubProjectDetail subProjectDetail,
                             ProjectApply projectApply, DpsAllProjectV dpsAllProjectV,
                             ProjectAndProcess projectAndProcess,
-                            DwgFrameInformation dwgFrameInformation, PrintWithItem printWithItem) {
+                            DwgFrameInformation dwgFrameInformation, PrintWithItem printWithItem,
+                            List<PdfAnnotation> pdfAnnotations) {
 
         ArrayList<MetaItem> items = metaItemRepository.findAll();
         printWithItem.setItems(items);
@@ -74,23 +76,27 @@ public class FillMetaItemsUtil {
         } else {
             Map<String, Object> result =
                     teamcoreService.getFileSizeAndVersion(Long.valueOf(gitlabId), filePath);
-            Map<String, Object> ans = (Map<String, Object>) result.get("result");
-            String size = (String) ans.get("size");
-            int version = (int) ans.get("version");
-            String commitId = (String) ans.get("commitId");
-            int index = size.indexOf(" ");
-            items.get(2).setValue(size.substring(index + 1));
-            items.get(3).setValue(size.substring(0, index));
-            items.get(30).setValue(String.valueOf(version));
-            items.get(32).setValue("http://webviewer.arcplus-99.com:3010/samples/viewing/viewing/index.html?" +
-                    "key=demo:601439739@qq.com:743d76bd0107bdda259b1ca19b0cb79456070bb2f0c4d57a89&" +
-                    "url=http://teamcore.arcplus-99.com/wopi/files/majorDetail/downloadOtherType?gitlabId=" +
-                    gitlabId + "&commitId=" + commitId + "&fileFullPath=" + filePath + "&branchName=design");
 
-            String[] split = filePath.split(".");
+            Map<String, Object> ans = (Map<String, Object>) result.get("result");
+            if (ans != null) {
+                String size = (String) ans.get("size");
+                int version = (int) ans.get("version");
+                String commitId = (String) ans.get("commitId");
+                int index = size.indexOf(" ");
+                items.get(2).setValue(size.substring(index + 1));
+                items.get(3).setValue(size.substring(0, index));
+                items.get(30).setValue(String.valueOf(version));
+                items.get(32).setValue("http://webviewer.arcplus-99.com:3010/samples/viewing/viewing/index.html?" +
+                        "key=demo:601439739@qq.com:743d76bd0107bdda259b1ca19b0cb79456070bb2f0c4d57a89&" +
+                        "url=http://teamcore.arcplus-99.com/wopi/files/majorDetail/downloadOtherType?gitlabId=" +
+                        gitlabId + "&commitId=" + commitId + "&fileFullPath=" + filePath + "&branchName=design");
+
+            }
+            String[] split = filePath.split("\\.");
             String fileType = split[split.length - 1];
             items.get(4).setValue(fileType);
             items.get(6).setValue(fileType + "创建程序");
+
         }
 
         items.get(0).setValue("文件级");
@@ -161,6 +167,7 @@ public class FillMetaItemsUtil {
 
         }
 
+//TODO 放入 items  下一个 value没有值
         /**
          * 填充actionMetaItem链表
          */
@@ -212,6 +219,8 @@ public class FillMetaItemsUtil {
         }
         printWithItem.setActionMetaItems(actionMetaItems);
         }
+
+        printWithItem.setPdfAnnotations(pdfAnnotations);
     }
 }
 
