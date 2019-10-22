@@ -4,6 +4,7 @@ import com.sx.createxml.dao.repository.*;
 import com.sx.createxml.service.Oracle2XML2Oracle;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -36,7 +37,7 @@ public class Oracle2XML2OracleController {
 
     @RequestMapping("createxml")
     @ResponseBody
-    public Object createXML() {
-        return oracle2XML2Oracle.createXMLFromOracle();
+    public Object createXML(@RequestParam Long id) {
+        return oracle2XML2Oracle.createXMLFromOracle(id);
     }
 }

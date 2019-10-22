@@ -22,4 +22,14 @@ public interface PdfAnnotationRepository extends JpaRepository<PdfAnnotation, Lo
     @Transactional
     List<PdfAnnotation> findByGitlabIdAndSignedFilePath(@Param("gitlabId") String gitlabId,
                                                         @Param("signedFilePath") String signedFilePath);
+
+    @Query(value = " select * from teamcore_pdf_annotation where author like :author",
+            nativeQuery =
+                    true)
+    @Modifying
+    @Transactional
+    List<PdfAnnotation> findByAuthor(@Param("author") String author);
+
+
+    List<PdfAnnotation> findByAuthorLike(String author);
 }

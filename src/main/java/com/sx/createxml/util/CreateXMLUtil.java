@@ -290,8 +290,6 @@ public class CreateXMLUtil {
                         annotation.appendChild(updateTime);
 
 
-
-
                         Element url = document.createElement("url");
                         String url1 = pdfAnnotations.get(k).getUrl();
                         if (StringUtils.isEmpty(url1)) {
@@ -300,7 +298,16 @@ public class CreateXMLUtil {
                         url.setTextContent(url1);
                         annotation.appendChild(url);
 
+                        Element xfdf_string = document.createElement("xfdf_string");
+                        String xfdf_string1 = pdfAnnotations.get(k).getXfdfString();
+                        if (StringUtils.isEmpty(xfdf_string1)) {
+                            xfdf_string1 = "null";
+                        }
+                        url.setTextContent(xfdf_string1);
+                        annotation.appendChild(xfdf_string);
+
                         annotations.appendChild(annotation);
+
                     }
                 }else {
                     annotations.setTextContent("null");

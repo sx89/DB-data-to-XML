@@ -107,3 +107,28 @@ public class FifthConfig {
         return new JpaTransactionManager(fifthEntityManagerFactory(builder).getObject());
     }
 }
+
+//<hibernate-configuration>
+//<session-factory>
+//<property name="hibernate.dialect">org.hibernate.dialect.PostgreSQLDialect</property>
+//<property name="hibernate.connection.driver_class">org.postgresql.Driver</property>
+//<property name="hibernate.connection.username">postgres</property>
+//<property name="hibernate.connection.password">password</property>
+//<property name="hibernate.connection.url">jdbc:postgresql://localhost:5432/hibernatedb</property>
+//
+//
+//
+//<property name="connection_pool_size">1</property>
+//
+//<property name="hbm2ddl.auto">create</property>
+//
+//<property name="show_sql">true</property>
+//
+//
+//
+//<mapping class="org.javabrains.sanjaya.dto.UserDetails"/>
+//
+//</session-factory>
+//</hibernate-configuration>
+
+//博客https://www.cnblogs.com/littleatp/p/10562583.html

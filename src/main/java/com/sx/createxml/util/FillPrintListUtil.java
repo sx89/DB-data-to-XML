@@ -7,11 +7,10 @@ import com.sx.createxml.dao.repository4.ProjectAndProcessRepository;
 import com.sx.createxml.pojo.XMLDataStruct.PrintWithItem;
 import com.sx.createxml.pojo.flowcore.ProjectAndProcess;
 import com.sx.createxml.pojo.mysql.*;
-import com.sx.createxml.pojo.oracle.DtDocumentInfo;
 import com.sx.createxml.pojo.oracleEBM.DpsAllProjectV;
+import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-import org.springframework.util.StringUtils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -45,22 +44,29 @@ public class FillPrintListUtil {
     FillMetaItemsUtil fillMetaItemsUtil;
     @Autowired
     PdfAnnotationRepository pdfAnnotationRepository;
-    public ArrayList<PrintWithItem> createPrint4XMLList() {
-        //构造所有print的数组
+
+    public ArrayList<PrintWithItem> createPrint4XMLList(Long id) {
+
 
         ArrayList<PrintWithItem> prints = new ArrayList<>();
-        List<Integer> printIds = new ArrayList<>();
-//            int[] printIds =OraclePrintID.printIds;
-        List<DtDocumentInfo> all = dtDocumentInfoRepository.findAll();
-        all.forEach(dtDocumentInfo -> {
-            printIds.add(Integer.parseInt(dtDocumentInfo.getMainid()));
-        });
-        for (int i = 0; i < printIds.size(); i++) {
+
+//        //构造所有print的数组
+//        List<DtDocumentInfo> all = dtDocumentInfoRepository.findAll();
+//        List<Integer> printIds = new ArrayList<>();
+////            int[] printIds =OraclePrintID.printIds;
+//        all.forEach(dtDocumentInfo -> {
+//            printIds.add(Integer.parseInt(dtDocumentInfo.getMainid()));
+//        });
+//        for (int i = 0; i < printIds.size(); i++) {
+
+
+
         //对print数组进行遍历,然后返回一个printList供生成xml的函数调用
 
             //对每一个oracle中的图纸id都从mysql三个表里找数剧
-            Integer idInt = printIds.get(i);
-            Long idL = Long.parseLong(idInt.toString());
+
+        Long idL = id;
+        Integer idInt = Integer.parseInt(id.toString());
 
             //把数据填入print4XML,用于生成XML
             PrintWithItem printWithItem = new PrintWithItem();
@@ -68,6 +74,7 @@ public class FillPrintListUtil {
 
             //从majorplaning拿到mysql三个表的id
             MajorPlanning majorPlanning = majorPlanningRepository.getById(idL);
+
             Long subProjectId = majorPlanning.getSubProjectId();
             Long projectId = majorPlanning.getProjectId();
             Long majorId = majorPlanning.getMajorId();
@@ -98,6 +105,7 @@ public class FillPrintListUtil {
             String gitlabId = majorDetail.getGitlabId();
             String signedFilePath = majorPlanning.getSignedFilePath();
             List<PdfAnnotation> pdfAnnotations =null;
+//        List<PdfAnnotation> pdfAnnotations = pdfAnnotations = pdfAnnotationRepository.findByAuthorLike("%" + "徐旻洋" + "%");
             if (!StringUtils.isEmpty(signedFilePath)) {
                 String[] split = signedFilePath.split("\\\\");
                 String signedFileName = "";
@@ -107,6 +115,8 @@ public class FillPrintListUtil {
                pdfAnnotations =
                         pdfAnnotationRepository.findByGitlabIdAndSignedFilePath("%" + gitlabId + "%",
                                 "%" + signedFileName + "%");
+
+//                pdfAnnotations=pdfAnnotationRepository.findByAuthor("%秦鑫%");
             }
 
 
@@ -120,9 +130,6 @@ public class FillPrintListUtil {
                     dpsAllProjectV, projectAndProcess, dwgFrameInformation, printWithItem, pdfAnnotations);
             //把填好的print放进prints(list)
             prints.add(printWithItem);
-
-
-        }
         return prints;
     }
 
