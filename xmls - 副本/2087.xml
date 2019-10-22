@@ -1,0 +1,813 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<root>
+<metaItem>
+<name>文件层级</name>
+<key>level</key>
+<type>varchar</type>
+<length>64</length>
+<source>生产系统</source>
+<unique>/</unique>
+<constrain>必填</constrain>
+<node>项目策划</node>
+<method>自动</method>
+<range>文件级</range>
+<notation>null</notation>
+<value>文件级</value>
+</metaItem>
+<metaItem>
+<name>载体</name>
+<key>carrier</key>
+<type>varchar</type>
+<length>64</length>
+<source>生产系统</source>
+<unique>/</unique>
+<constrain>必填</constrain>
+<node>归档总结</node>
+<method>自动</method>
+<range>电子</range>
+<notation>null</notation>
+<value>电子</value>
+</metaItem>
+<metaItem>
+<name>单位</name>
+<key>dept</key>
+<type>varchar</type>
+<length>64</length>
+<source>生产系统</source>
+<unique>/</unique>
+<constrain>/</constrain>
+<node>归档总结</node>
+<method>自动</method>
+<range>M</range>
+<notation>电子文件容量单位</notation>
+<value>null</value>
+</metaItem>
+<metaItem>
+<name>数量或大小</name>
+<key>countsize</key>
+<type>int</type>
+<length>11</length>
+<source>生产系统</source>
+<unique>/</unique>
+<constrain>必填</constrain>
+<node>归档总结</node>
+<method>自动</method>
+<range>/</range>
+<notation>null</notation>
+<value>null</value>
+</metaItem>
+<metaItem>
+<name>格式名称</name>
+<key>layoutname</key>
+<type>varchar</type>
+<length>64</length>
+<source>生产系统</source>
+<unique>/</unique>
+<constrain>必填</constrain>
+<node>归档总结</node>
+<method>自动</method>
+<range>/</range>
+<notation>电子文件格式分类</notation>
+<value>md</value>
+</metaItem>
+<metaItem>
+<name>存址</name>
+<key>address</key>
+<type>varchar</type>
+<length>64</length>
+<source>数字档案馆系统</source>
+<unique>/</unique>
+<constrain>必填</constrain>
+<node>归档总结</node>
+<method>自动</method>
+<range>电子路径</range>
+<notation>电子路径</notation>
+<value>null</value>
+</metaItem>
+<metaItem>
+<name>文档创建程序名称</name>
+<key>creatprg</key>
+<type>varchar</type>
+<length>64</length>
+<source>生产系统</source>
+<unique>/</unique>
+<constrain>/</constrain>
+<node>归档总结</node>
+<method>自动</method>
+<range>/</range>
+<notation>null</notation>
+<value>md创建程序</value>
+</metaItem>
+<metaItem>
+<name>计算机文件名</name>
+<key>cfilename</key>
+<type>varchar</type>
+<length>64</length>
+<source>生产系统</source>
+<unique>/</unique>
+<constrain>/</constrain>
+<node>归档总结</node>
+<method>自动</method>
+<range>/</range>
+<notation>文件命名规范</notation>
+<value>null</value>
+</metaItem>
+<metaItem>
+<name>设计资质</name>
+<key>design_zizhi</key>
+<type>varchar</type>
+<length>64</length>
+<source>生产系统</source>
+<unique>/</unique>
+<constrain>/</constrain>
+<node>项目策划</node>
+<method>自动</method>
+<range>/</range>
+<notation>设计资质分类方案</notation>
+<value>null</value>
+</metaItem>
+<metaItem>
+<name>子项编号</name>
+<key>itemno</key>
+<type>varchar</type>
+<length>64</length>
+<source>生产系统</source>
+<unique>/</unique>
+<constrain>/</constrain>
+<node>项目策划</node>
+<method>自动</method>
+<range>/</range>
+<notation>设计阶段分类方案</notation>
+<value>1990</value>
+</metaItem>
+<metaItem>
+<name>专业编号</name>
+<key>specialcode</key>
+<type>varchar</type>
+<length>64</length>
+<source>生产系统</source>
+<unique>/</unique>
+<constrain>/</constrain>
+<node>项目策划</node>
+<method>自动</method>
+<range>/</range>
+<notation>项目策划方案</notation>
+<value>I</value>
+</metaItem>
+<metaItem>
+<name>归档专业</name>
+<key>gdspecial</key>
+<type>varchar</type>
+<length>64</length>
+<source>生产系统</source>
+<unique>/</unique>
+<constrain>/</constrain>
+<node>项目策划</node>
+<method>自动</method>
+<range>建筑、结构、机电</range>
+<notation>建筑、结构、机电</notation>
+<value>室内</value>
+</metaItem>
+<metaItem>
+<name>文件分类</name>
+<key>filetype</key>
+<type>varchar</type>
+<length>64</length>
+<source>生产系统</source>
+<unique>/</unique>
+<constrain>/</constrain>
+<node>项目策划</node>
+<method>自动</method>
+<range>/</range>
+<notation>文件分类方案</notation>
+<value>null</value>
+</metaItem>
+<metaItem>
+<name>文件类别</name>
+<key>fileleibie</key>
+<type>varchar</type>
+<length>64</length>
+<source>生产系统</source>
+<unique>/</unique>
+<constrain>/</constrain>
+<node>项目策划</node>
+<method>自动</method>
+<range>/</range>
+<notation>文件分类方案</notation>
+<value>null</value>
+</metaItem>
+<metaItem>
+<name>文件类别编码</name>
+<key>leibiecode</key>
+<type>varchar</type>
+<length>64</length>
+<source>生产系统</source>
+<unique>/</unique>
+<constrain>/</constrain>
+<node>项目策划</node>
+<method>自动</method>
+<range>/</range>
+<notation>文件类别分类方案</notation>
+<value>null</value>
+</metaItem>
+<metaItem>
+<name>文件类别序号</name>
+<key>leibiexuhao</key>
+<type>varchar</type>
+<length>64</length>
+<source>生产系统</source>
+<unique>/</unique>
+<constrain>/</constrain>
+<node>项目策划</node>
+<method>自动</method>
+<range>/</range>
+<notation>序号</notation>
+<value>null</value>
+</metaItem>
+<metaItem>
+<name>关联文件</name>
+<key>rfile</key>
+<type>varchar</type>
+<length>64</length>
+<source>生产系统</source>
+<unique>/</unique>
+<constrain>/</constrain>
+<node>项目策划</node>
+<method>自动</method>
+<range>/</range>
+<notation>null</notation>
+<value>README.md</value>
+</metaItem>
+<metaItem>
+<name>文件是否必归</name>
+<key>ismust</key>
+<type>varchar</type>
+<length>64</length>
+<source>生产系统</source>
+<unique>/</unique>
+<constrain>/</constrain>
+<node>项目策划</node>
+<method>自动</method>
+<range>是、否</range>
+<notation>是、否</notation>
+<value>null</value>
+</metaItem>
+<metaItem>
+<name>文件捕获节点</name>
+<key>ctpoint</key>
+<type>varchar</type>
+<length>64</length>
+<source>生产系统</source>
+<unique>/</unique>
+<constrain>/</constrain>
+<node>归档总结</node>
+<method>自动</method>
+<range>/</range>
+<notation>生产流程节点</notation>
+<value>null</value>
+</metaItem>
+<metaItem>
+<name>文件来源</name>
+<key>filesrc</key>
+<type>varchar</type>
+<length>64</length>
+<source>生产系统</source>
+<unique>/</unique>
+<constrain>/</constrain>
+<node>施工图审查</node>
+<method>自动</method>
+<range>/</range>
+<notation>生产流程节点</notation>
+<value>pds</value>
+</metaItem>
+<metaItem>
+<name>工程编号</name>
+<key>prjno</key>
+<type>varchar</type>
+<length>64</length>
+<source>生产系统</source>
+<unique>是</unique>
+<constrain>必填</constrain>
+<node>项目策划</node>
+<method>自动</method>
+<range>/</range>
+<notation>工程编号规范</notation>
+<value>21519E0005</value>
+</metaItem>
+<metaItem>
+<name>工程名称</name>
+<key>prjname</key>
+<type>varchar</type>
+<length>64</length>
+<source>生产系统</source>
+<unique>/</unique>
+<constrain>必填</constrain>
+<node>项目策划</node>
+<method>自动</method>
+<range>/</range>
+<notation>null</notation>
+<value>黄浦区五里桥街道104街坊39-1地块住宅项目-SJ1506-056</value>
+</metaItem>
+<metaItem>
+<name>子项名称</name>
+<key>itemname</key>
+<type>varchar</type>
+<length>64</length>
+<source>生产系统</source>
+<unique>/</unique>
+<constrain>/</constrain>
+<node>项目策划</node>
+<method>自动</method>
+<range>/</range>
+<notation>null</notation>
+<value>1号楼-SJ1506-056</value>
+</metaItem>
+<metaItem>
+<name>设计阶段</name>
+<key>phasename</key>
+<type>varchar</type>
+<length>64</length>
+<source>生产系统</source>
+<unique>/</unique>
+<constrain>必填</constrain>
+<node>项目策划</node>
+<method>自动</method>
+<range>/</range>
+<notation>阶段分类方案</notation>
+<value>施工图设计</value>
+</metaItem>
+<metaItem>
+<name>设计专业</name>
+<key>specialname</key>
+<type>varchar</type>
+<length>64</length>
+<source>生产系统</source>
+<unique>/</unique>
+<constrain>必填</constrain>
+<node>项目策划</node>
+<method>自动</method>
+<range>/</range>
+<notation>专业分类方案：建筑、结构、给排水、强电、弱电、暖通、动力</notation>
+<value>施工图设计</value>
+</metaItem>
+<metaItem>
+<name>设计单位</name>
+<key>jsdwname</key>
+<type>varchar</type>
+<length>64</length>
+<source>生产系统</source>
+<unique>/</unique>
+<constrain>必填</constrain>
+<node>项目策划</node>
+<method>自动</method>
+<range>/</range>
+<notation>设计单位分类方案</notation>
+<value>华东建筑设计研究院有限公司</value>
+</metaItem>
+<metaItem>
+<name>建设单位</name>
+<key>jsname</key>
+<type>varchar</type>
+<length>64</length>
+<source>生产系统</source>
+<unique>/</unique>
+<constrain>必填</constrain>
+<node>项目策划</node>
+<method>自动</method>
+<range>/</range>
+<notation>null</notation>
+<value>上海商业会计学校</value>
+</metaItem>
+<metaItem>
+<name>合作设计单位</name>
+<key>hzdwname</key>
+<type>varchar</type>
+<length>64</length>
+<source>生产系统</source>
+<unique>/</unique>
+<constrain>/</constrain>
+<node>项目策划</node>
+<method>自动</method>
+<range>/</range>
+<notation>null</notation>
+<value>null</value>
+</metaItem>
+<metaItem>
+<name>图纸编号</name>
+<key>picno</key>
+<type>varchar</type>
+<length>64</length>
+<source>生产系统</source>
+<unique>/</unique>
+<constrain>必填</constrain>
+<node>项目策划</node>
+<method>自动</method>
+<range>/</range>
+<notation>图纸命名方案</notation>
+<value>I-1号楼-TD-002</value>
+</metaItem>
+<metaItem>
+<name>图纸名称</name>
+<key>picname</key>
+<type>varchar</type>
+<length>64</length>
+<source>生产系统</source>
+<unique>/</unique>
+<constrain>必填</constrain>
+<node>项目策划</node>
+<method>自动</method>
+<range>/</range>
+<notation>图纸命名方案</notation>
+<value>各户型通用装饰节点详图（二） (ID 135861)</value>
+</metaItem>
+<metaItem>
+<name>版次</name>
+<key>version</key>
+<type>varchar</type>
+<length>64</length>
+<source>生产系统</source>
+<unique>/</unique>
+<constrain>必填</constrain>
+<node>项目策划</node>
+<method>自动</method>
+<range>/</range>
+<notation>null</notation>
+<value>null</value>
+</metaItem>
+<metaItem>
+<name>电子源文件</name>
+<key>annexsrc</key>
+<type>varchar</type>
+<length>64</length>
+<source>生产系统</source>
+<unique>/</unique>
+<constrain>必填</constrain>
+<node>项目策划</node>
+<method>自动</method>
+<range>/</range>
+<notation>null</notation>
+<value>室内</value>
+</metaItem>
+<metaItem>
+<name>预览文件</name>
+<key>tiffile</key>
+<type>varchar</type>
+<length>64</length>
+<source>生产系统</source>
+<unique>/</unique>
+<constrain>必填</constrain>
+<node>项目策划</node>
+<method>自动</method>
+<range>/</range>
+<notation>null</notation>
+<value>null</value>
+</metaItem>
+<metaItem>
+<name>扫描件</name>
+<key>pdffile</key>
+<type>varchar</type>
+<length>64</length>
+<source>生产系统</source>
+<unique>/</unique>
+<constrain>必填</constrain>
+<node>项目策划</node>
+<method>自动</method>
+<range>/</range>
+<notation>null</notation>
+<value>null</value>
+</metaItem>
+<metaItem>
+<name>图幅</name>
+<key>map</key>
+<type>varchar</type>
+<length>64</length>
+<source>生产系统</source>
+<unique>/</unique>
+<constrain>必填</constrain>
+<node>项目策划</node>
+<method>自动</method>
+<range>/</range>
+<notation>null</notation>
+<value>A2</value>
+</metaItem>
+<metaItem>
+<name>比例</name>
+<key>proportion</key>
+<type>varchar</type>
+<length>64</length>
+<source>生产系统</source>
+<unique>/</unique>
+<constrain>必填</constrain>
+<node>项目策划</node>
+<method>自动</method>
+<range>/</range>
+<notation>null</notation>
+<value>1:05</value>
+</metaItem>
+<metaItem>
+<name>设计人</name>
+<key>designer</key>
+<type>varchar</type>
+<length>64</length>
+<source>生产系统</source>
+<unique>/</unique>
+<constrain>必填</constrain>
+<node>项目策划</node>
+<method>自动</method>
+<range>/</range>
+<notation>null</notation>
+<value>王丽(wangli)</value>
+</metaItem>
+<metaItem>
+<name>绘图人</name>
+<key>draftsman</key>
+<type>varchar</type>
+<length>64</length>
+<source>生产系统</source>
+<unique>/</unique>
+<constrain>必填</constrain>
+<node>项目策划</node>
+<method>自动</method>
+<range>/</range>
+<notation>null</notation>
+<value>王丽(wangli)</value>
+</metaItem>
+<metaItem>
+<name>校对人</name>
+<key>proofreader</key>
+<type>varchar</type>
+<length>64</length>
+<source>生产系统</source>
+<unique>/</unique>
+<constrain>必填</constrain>
+<node>项目策划</node>
+<method>自动</method>
+<range>/</range>
+<notation>null</notation>
+<value>吴家巍(wujw)</value>
+</metaItem>
+<metaItem>
+<name>审核人</name>
+<key>reviewer</key>
+<type>varchar</type>
+<length>64</length>
+<source>生产系统</source>
+<unique>/</unique>
+<constrain>必填</constrain>
+<node>项目策划</node>
+<method>自动</method>
+<range>/</range>
+<notation>null</notation>
+<value>佘海峰(shehf)</value>
+</metaItem>
+<metaItem>
+<name>审定人</name>
+<key>reader</key>
+<type>varchar</type>
+<length>64</length>
+<source>生产系统</source>
+<unique>/</unique>
+<constrain>必填</constrain>
+<node>项目策划</node>
+<method>自动</method>
+<range>/</range>
+<notation>null</notation>
+<value>佘海峰(shehf)</value>
+</metaItem>
+<metaItem>
+<name>专业负责人</name>
+<key>specialmanager</key>
+<type>varchar</type>
+<length>64</length>
+<source>生产系统</source>
+<unique>/</unique>
+<constrain>必填</constrain>
+<node>项目策划</node>
+<method>自动</method>
+<range>/</range>
+<notation>null</notation>
+<value>王丽(wangli)</value>
+</metaItem>
+<metaItem>
+<name>设计总负责人</name>
+<key>designmater</key>
+<type>varchar</type>
+<length>64</length>
+<source>生产系统</source>
+<unique>/</unique>
+<constrain>必填</constrain>
+<node>项目策划</node>
+<method>自动</method>
+<range>/</range>
+<notation>null</notation>
+<value>顾成竹(gucz)</value>
+</metaItem>
+<metaItem>
+<name>出图日期</name>
+<key>phdate</key>
+<type>date</type>
+<length>64</length>
+<source>生产系统</source>
+<unique>/</unique>
+<constrain>必填</constrain>
+<node>项目策划</node>
+<method>自动</method>
+<range>/</range>
+<notation>null</notation>
+<value>null</value>
+</metaItem>
+<metaItem>
+<name>图纸方向</name>
+<key>pospic</key>
+<type>varchar</type>
+<length>64</length>
+<source>生产系统</source>
+<unique>/</unique>
+<constrain>必填</constrain>
+<node>项目策划</node>
+<method>自动</method>
+<range>横向、竖向</range>
+<notation>null</notation>
+<value>横</value>
+</metaItem>
+<metaItem>
+<name>二维码</name>
+<key>qrcode</key>
+<type>varchar</type>
+<length>64</length>
+<source>生产系统</source>
+<unique>/</unique>
+<constrain>必填</constrain>
+<node>项目策划</node>
+<method>自动</method>
+<range>/</range>
+<notation>null</notation>
+<value>null</value>
+</metaItem>
+<metaItem>
+<name>缩略图</name>
+<key>thumbnail</key>
+<type>varchar</type>
+<length>64</length>
+<source>生产系统</source>
+<unique>/</unique>
+<constrain>/</constrain>
+<node>项目策划</node>
+<method>自动</method>
+<range>/</range>
+<notation>null</notation>
+<value>null</value>
+</metaItem>
+<metaItem>
+<name>备注</name>
+<key>remark</key>
+<type>varchar</type>
+<length>64</length>
+<source>生产系统</source>
+<unique>/</unique>
+<constrain>/</constrain>
+<node>项目策划</node>
+<method>自动</method>
+<range>/</range>
+<notation>null</notation>
+<value>null</value>
+</metaItem>
+<logs>null</logs>
+    <pdfAnnotations>
+        <annotation>
+            <id>4283</id>
+            <annotationId>b41498e0-5509-d62f-8caa-da1aafbcdc95</annotationId>
+            <author>徐旻洋</author>
+            <createTime>2019-08-23 12:08:32.0</createTime>
+            <updateTime>2019-08-23 12:08:32.0</updateTime>
+            <url>
+                http://teamcore.arcplus-99.com:8087/wopi/files/majorDetail/downloadOtherType?gitlabId=481@!@commitId=93c085c0b3455439d009b9798b18c59f27350370@!@fileFullPath=A出图图纸@!!@已签章@!!@A-00-00-02_二层平面图.pdf@!@branchName=design
+            </url>
+        </annotation>
+        <annotation>
+            <id>4284</id>
+            <annotationId>69b45e1b-02ce-eefc-6e12-e87ba5e1abda</annotationId>
+            <author>徐旻洋</author>
+            <createTime>2019-08-23 12:08:32.0</createTime>
+            <updateTime>2019-08-23 12:08:32.0</updateTime>
+            <url>
+                http://teamcore.arcplus-99.com:8087/wopi/files/majorDetail/downloadOtherType?gitlabId=481@!@commitId=93c085c0b3455439d009b9798b18c59f27350370@!@fileFullPath=A出图图纸@!!@已签章@!!@A-00-00-02_二层平面图.pdf@!@branchName=design
+            </url>
+        </annotation>
+        <annotation>
+            <id>4396</id>
+            <annotationId>cb02ff81-477a-8769-9ba8-16d0b87e643e</annotationId>
+            <author>徐旻洋</author>
+            <createTime>2019-08-23 21:06:35.0</createTime>
+            <updateTime>2019-08-23 21:06:35.0</updateTime>
+            <url>
+                http://teamcore.arcplus-99.com:8087/wopi/files/majorDetail/downloadOtherType?gitlabId=517@!@commitId=dcb40fcda5e809b40e89b05a6f14dbc11ad39cac@!@fileFullPath=A出图图纸@!!@白图@!!@A-00-00-01_一层平面图.pdf@!@branchName=design
+            </url>
+        </annotation>
+        <annotation>
+            <id>4397</id>
+            <annotationId>9b4cf839-594c-d505-558a-281bbd60a079</annotationId>
+            <author>徐旻洋</author>
+            <createTime>2019-08-23 21:06:55.0</createTime>
+            <updateTime>2019-08-23 21:06:55.0</updateTime>
+            <url>
+                http://teamcore.arcplus-99.com:8087/wopi/files/majorDetail/downloadOtherType?gitlabId=517@!@commitId=dcb40fcda5e809b40e89b05a6f14dbc11ad39cac@!@fileFullPath=A出图图纸@!!@白图@!!@A-00-00-01_一层平面图.pdf@!@branchName=design
+            </url>
+        </annotation>
+        <annotation>
+            <id>4398</id>
+            <annotationId>6756b518-072b-d902-6430-6bc106c219c0</annotationId>
+            <author>徐旻洋</author>
+            <createTime>2019-08-23 21:13:53.0</createTime>
+            <updateTime>2019-08-23 21:13:53.0</updateTime>
+            <url>
+                http://teamcore.arcplus-99.com:8087/fileManager/download?id=3b5743c5-76f5-40e6-8199-9d5e462b48ed;1.0@!@isWopi=false@!@name=二层平面图
+                土建.dwg
+            </url>
+        </annotation>
+        <annotation>
+            <id>4399</id>
+            <annotationId>02edb4e7-7491-ac44-d07a-ba19dfa8ee93</annotationId>
+            <author>徐旻洋</author>
+            <createTime>2019-08-23 21:13:53.0</createTime>
+            <updateTime>2019-08-23 21:13:53.0</updateTime>
+            <url>
+                http://teamcore.arcplus-99.com:8087/fileManager/download?id=3b5743c5-76f5-40e6-8199-9d5e462b48ed;1.0@!@isWopi=false@!@name=二层平面图
+                土建.dwg
+            </url>
+        </annotation>
+        <annotation>
+            <id>4400</id>
+            <annotationId>3df6ac44-e24a-e4e9-5e2e-981df44fe863</annotationId>
+            <author>徐旻洋</author>
+            <createTime>2019-08-23 21:14:22.0</createTime>
+            <updateTime>2019-08-23 21:14:22.0</updateTime>
+            <url>
+                http://teamcore.arcplus-99.com:8087/fileManager/download?id=3b5743c5-76f5-40e6-8199-9d5e462b48ed;1.0@!@isWopi=false@!@name=二层平面图
+                土建.dwg
+            </url>
+        </annotation>
+        <annotation>
+            <id>4401</id>
+            <annotationId>5638cc13-85c4-8120-4aef-534e7fb7fe83</annotationId>
+            <author>徐旻洋</author>
+            <createTime>2019-08-23 21:14:54.0</createTime>
+            <updateTime>2019-08-23 21:14:54.0</updateTime>
+            <url>
+                http://teamcore.arcplus-99.com:8087/fileManager/download?id=3b5743c5-76f5-40e6-8199-9d5e462b48ed;1.0@!@isWopi=false@!@name=二层平面图
+                土建.dwg
+            </url>
+        </annotation>
+        <annotation>
+            <id>4402</id>
+            <annotationId>eb84f397-500e-8840-1fd0-bee89fa5dbce</annotationId>
+            <author>徐旻洋</author>
+            <createTime>2019-08-23 21:15:51.0</createTime>
+            <updateTime>2019-08-23 21:15:51.0</updateTime>
+            <url>
+                http://teamcore.arcplus-99.com:8087/fileManager/download?id=05945c91-5c56-4aa5-9522-ec2cefad8014;1.0@!@isWopi=false@!@name=初步设计专家审查意见.doc
+            </url>
+        </annotation>
+        <annotation>
+            <id>4420</id>
+            <annotationId>7b1fb707-16cc-2ec4-7056-73794aa4ff39</annotationId>
+            <author>徐旻洋</author>
+            <createTime>2019-08-25 10:10:15.0</createTime>
+            <updateTime>2019-08-25 10:10:15.0</updateTime>
+            <url>
+                http://teamcore.arcplus-99.com:8087/wopi/files/majorDetail/downloadOtherType?gitlabId=517@!@commitId=ed9a8d368756633305a30cf47fc15e80accfd576@!@fileFullPath=A出图图纸@!!@白图@!!@A-00-00-03_三层平面图.pdf@!@branchName=design
+            </url>
+        </annotation>
+        <annotation>
+            <id>4526</id>
+            <annotationId>90468bc5-4158-1726-82cb-574c2b35f5bc</annotationId>
+            <author>徐旻洋</author>
+            <createTime>2019-09-04 15:36:40.0</createTime>
+            <updateTime>2019-09-04 15:36:40.0</updateTime>
+            <url>
+                http://teamcore.arcplus-99.com:8087/wopi/files/majorDetail/downloadOtherType?gitlabId=481@!@commitId=15f626cf42fec938f5144031e074e27d39fceb36@!@fileFullPath=A出图图纸@!!@白图@!!@A-3_三层.pdf@!@branchName=design
+            </url>
+        </annotation>
+        <annotation>
+            <id>4604</id>
+            <annotationId>f1be73fe-8452-9d66-9250-22ed95f426b5</annotationId>
+            <author>徐旻洋</author>
+            <createTime>2019-09-06 19:27:18.0</createTime>
+            <updateTime>2019-09-06 19:27:18.0</updateTime>
+            <url>
+                http://teamcore.arcplus-99.com:8087/wopi/files/majorDetail/downloadOtherType?gitlabId=517@!@commitId=aa5f4b53283b1c9fb8ee32677d2ae8fc917abc8c@!@fileFullPath=A出图图纸@!!@白图@!!@施工图@!!@A-2号楼-02-00-A_地下一层平面
+                (ID 32327).pdf@!@branchName=design
+            </url>
+        </annotation>
+        <annotation>
+            <id>6851</id>
+            <annotationId>046ac4ab-3919-7ca7-4fc1-ec5a6df0521c</annotationId>
+            <author>徐旻洋</author>
+            <createTime>2019-10-18 17:04:12.0</createTime>
+            <updateTime>2019-10-18 17:04:12.0</updateTime>
+            <url>
+                http://teamcore.arcplus-99.com:8087/wopi/files/majorDetail/downloadOtherType?gitlabId=994@!@commitId=b273a6bb35b034fb0508ec0bc1a57c0ce1a3f01f@!@fileFullPath=A出图图纸@!!@白图@!!@A-00-00-02_二层平面图.pdf@!@branchName=design
+            </url>
+        </annotation>
+    </pdfAnnotations>
+</root>
