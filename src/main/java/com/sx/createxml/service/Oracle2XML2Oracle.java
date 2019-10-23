@@ -33,13 +33,15 @@ public class Oracle2XML2Oracle {
     @Autowired
     FillPrintListUtil fillPrintListUtil;
 
-    public Object createXMLFromOracle() {
+    public Object createXMLFromOracle(Long id) {
 
         //指定存放xml的路径
         String destFolerPath = null ;
-        ArrayList<PrintWithItem> printWithItemList = fillPrintListUtil.createPrint4XMLList();
+        //填满图纸链表
+        ArrayList<PrintWithItem> printWithItemList = fillPrintListUtil.createPrint4XMLList(id);
+        //创建xml
         ArrayList<CreateXMLResult> xmlByDOM = CreateXMLUtil.createXMLByDOM(destFolerPath, printWithItemList);
-
+        //更新回数据库
         for (CreateXMLResult createXMLResult : xmlByDOM) {
             String createPath = createXMLResult.getCreatePath();
             String mainId = createXMLResult.getPrintId().toString();
