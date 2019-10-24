@@ -17,6 +17,7 @@ public interface MajorPlanningRepository extends JpaRepository<MajorPlanning, Lo
 
     MajorPlanning findByDwgNameAndDwgNoAndMajorId(String dwgName, String dwgNo, Long majorId);
 
+    List<MajorPlanning> findByProjectId(Long proejctId);
 
     List<MajorPlanning> findAllByMajorId(Long majorId);
 
