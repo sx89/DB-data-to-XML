@@ -771,14 +771,14 @@
 <author>徐旻洋</author>
 <createTime>2019-08-23 12:08:32.0</createTime>
 <updateTime>2019-08-23 12:08:32.0</updateTime>
-<url>&lt;?xml version="1.0" encoding="UTF-8" ?&gt;
+<url>http://teamcore.arcplus-99.com:8087/wopi/files/majorDetail/downloadOtherType?gitlabId=1014@!@commitId=93c085c0b3455439d009b9798b18c59f27350370@!@fileFullPath=A出图图纸@!!@已签章@!!@S-00-00-01_一层平面图.pdf@!@branchName=design</url>
+<xfdfString>&lt;?xml version="1.0" encoding="UTF-8" ?&gt;
 &lt;xfdf xmlns="http://ns.adobe.com/xfdf/" xml:space="preserve"&gt;
 &lt;fields /&gt;
 &lt;add&gt;&lt;circle page="0" rect="1528.82243,883.17757,2052.58567,1360.934579" color="#000000" flags="print" name="69b45e1b-02ce-eefc-6e12-e87ba5e1abda" title="徐旻洋" subject="椭圆" date="D:20190823120810+08'00'" creationdate="D:20190823120806+08'00'"/&gt;&lt;/add&gt;
 &lt;modify /&gt;
 &lt;delete /&gt;
-&lt;/xfdf&gt;</url>
-<xfdf_string/>
+&lt;/xfdf&gt;</xfdfString>
 </annotation>
 </pdfAnnotations>
 </root>

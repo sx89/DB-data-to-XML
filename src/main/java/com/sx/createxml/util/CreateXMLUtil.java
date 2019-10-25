@@ -166,7 +166,7 @@ public class CreateXMLUtil {
                 //book.setAttribute("id", "1");
 
                 // TODO 每一个item需要一个循环
-                if (actionMetaItems != null&&actionMetaItems.size()>0) {
+                if (actionMetaItems != null && actionMetaItems.size() > 0) {
                     for (int k = 0; k < actionMetaItems.size(); k++) {
                         Element item = document.createElement("item");
 
@@ -294,14 +294,13 @@ public class CreateXMLUtil {
                         url.setTextContent(url1);
                         annotation.appendChild(url);
 
-                        Element xfdf_string = document.createElement("xfdf_string");
-                        String xfdf_string1 = pdfAnnotations.get(k).getXfdfString();
-                        if (StringUtils.isEmpty(xfdf_string1)) {
-                            xfdf_string1 = "null";
+                        Element xfdfString = document.createElement("xfdfString");
+                        String xfdfString1 = pdfAnnotations.get(k).getXfdfString();
+                        if (StringUtils.isEmpty(xfdfString1)) {
+                            xfdfString1 = "null";
                         }
-                        url.setTextContent(xfdf_string1);
-                        annotation.appendChild(xfdf_string);
-
+                        xfdfString.setTextContent(xfdfString1);
+                        annotation.appendChild(xfdfString);
                         annotations.appendChild(annotation);
 
                     }
