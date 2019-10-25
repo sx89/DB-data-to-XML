@@ -331,7 +331,7 @@ public class CreateXMLUtil {
                     destFolerPath = "xmls/";
                 }
                 //创建路径不要用中文
-                String createPath = destFolerPath + printWithItem.getPrintId() + ".xml";
+                String createPath = destFolerPath + printWithItem.getPrintName() + ".xml";
 
                 File dest = new File(createPath);
                 // 使用Transformer的transform()方法将DOM树转换成XML

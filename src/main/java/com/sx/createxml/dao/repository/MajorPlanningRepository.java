@@ -21,6 +21,8 @@ public interface MajorPlanningRepository extends JpaRepository<MajorPlanning, Lo
 
     List<MajorPlanning> findAllByMajorId(Long majorId);
 
+    List<MajorPlanning> findAllByProjectIdAndSubProjectId(Long projectId, Long subProjectId);
+
 
     @Override
     void deleteById(Long id);

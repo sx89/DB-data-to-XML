@@ -11,12 +11,12 @@ import javax.sql.DataSource;
 
 @Configuration
 public class DataSourceConfig {
-//    @Bean(name = "fifthDataSource")
-//    @Qualifier(value = "fifthDataSource")  //spring装配bean的唯一标识
-//    @ConfigurationProperties(prefix = "spring.datasource.fifth")   //application.properties配置文件中该数据源的配置前缀
-//    public DataSource fifthDataSource(){
-//        return DataSourceBuilder.create().build();
-//    }
+    @Bean(name = "fifthDataSource")
+    @Qualifier(value = "fifthDataSource")  //spring装配bean的唯一标识
+    @ConfigurationProperties(prefix = "spring.datasource.fifth")   //application.properties配置文件中该数据源的配置前缀
+    public DataSource fifthDataSource(){
+        return DataSourceBuilder.create().build();
+    }
 
     @Bean(name = "forthDataSource")
     @Qualifier(value = "forthDataSource")  //spring装配bean的唯一标识
