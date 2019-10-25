@@ -5,6 +5,7 @@ import com.sx.createxml.dao.repository2.DtDocumentInfoRepository;
 import com.sx.createxml.pojo.CreateXMLResult;
 import com.sx.createxml.pojo.XMLDataStruct.PrintWithItem;
 import com.sx.createxml.pojo.mysql.MajorPlanning;
+import com.sx.createxml.pojo.mysql.ProjectApply;
 import com.sx.createxml.util.CreateXMLUtil;
 import com.sx.createxml.util.FillPrintListUtil;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -70,6 +71,31 @@ public class Oracle2XML2Oracle {
                 dtDocumentInfoRepository.updateMetaFileByMainid(createPath, mainId);
             }
 
+        }
+        return "create xml success";
+    }
+
+    public Object createAllXml() {
+        List<ProjectApply> allProject = projectApplyRepository.findAll();
+        for (ProjectApply project : allProject) {
+            Long id = project.getId();
+            List<MajorPlanning> mps = majorPlanningRepository.findByProjectId(id);
+            for (MajorPlanning temp : mps) {
+                Long id1 = temp.getId();
+                //指定存放xml的路径
+                String destFolerPath = null;
+                //填满图纸链表
+                ArrayList<PrintWithItem> printWithItemList = fillPrintListUtil.createPrint4XMLList(id1);
+                //创建xml
+                ArrayList<CreateXMLResult> xmlByDOM = CreateXMLUtil.createXMLByDOM(destFolerPath, printWithItemList);
+                //更新回数据库
+                for (CreateXMLResult createXMLResult : xmlByDOM) {
+                    String createPath = createXMLResult.getCreatePath();
+                    String mainId = createXMLResult.getPrintId().toString();
+                    dtDocumentInfoRepository.updateMetaFileByMainid(createPath, mainId);
+                }
+
+            }
         }
         return "create xml success";
     }

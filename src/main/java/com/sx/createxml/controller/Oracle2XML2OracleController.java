@@ -35,6 +35,11 @@ public class Oracle2XML2OracleController {
         return "hello";
     }
 
+    @RequestMapping("createAllXml")
+    public  Object createAllXml(){
+        return oracle2XML2Oracle.createAllXml();
+    }
+
     @RequestMapping("createXmlByProjectId")
     public Object createXMLByProjectId (@RequestParam Long id){
         return oracle2XML2Oracle.createXMLFromOracleByProjectId(id);

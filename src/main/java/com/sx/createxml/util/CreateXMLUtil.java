@@ -166,7 +166,7 @@ public class CreateXMLUtil {
                 //book.setAttribute("id", "1");
 
                 // TODO 每一个item需要一个循环
-                if(actionMetaItems!=null) {
+                if (actionMetaItems != null&&actionMetaItems.size()>0) {
                     for (int k = 0; k < actionMetaItems.size(); k++) {
                         Element item = document.createElement("item");
 
@@ -228,9 +228,8 @@ public class CreateXMLUtil {
 
                         logs.appendChild(item);
                     }
-                }else {
+                } else {
                     logs.setTextContent("null");
-
                 }
                 root.appendChild(logs);
 
@@ -238,9 +237,8 @@ public class CreateXMLUtil {
                 Element annotations = document.createElement("pdfAnnotations");
                 //book.setAttribute("id", "1");
 
-                if(pdfAnnotations!=null) {
+                if (pdfAnnotations != null && pdfAnnotations.size() > 0) {
                     for (int k = 0; k < pdfAnnotations.size(); k++) {
-
 
 
                         Element annotation = document.createElement("annotation");
@@ -252,8 +250,6 @@ public class CreateXMLUtil {
                         }
                         id.setTextContent(id1);
                         annotation.appendChild(id);
-
-
 
 
                         Element annotationId = document.createElement("annotationId");
@@ -309,7 +305,7 @@ public class CreateXMLUtil {
                         annotations.appendChild(annotation);
 
                     }
-                }else {
+                } else {
                     annotations.setTextContent("null");
 
                 }

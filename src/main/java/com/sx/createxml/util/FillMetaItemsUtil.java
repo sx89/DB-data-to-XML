@@ -65,7 +65,8 @@ public class FillMetaItemsUtil {
         String gitlabId = majorDetail.getGitlabId();
 
         String filePath = majorPlanning.getFilePath();
-        if (StringUtils.isEmpty(filePath)) {
+        //TODO teamcore 有问题,暂时设为空
+//        if (StringUtils.isEmpty(filePath)) {
             items.get(2).setValue(null);
             items.get(3).setValue(null);
             items.get(30).setValue(null);
@@ -73,31 +74,31 @@ public class FillMetaItemsUtil {
             items.get(4).setValue(null);
             items.get(6).setValue(null);
 
-        } else {
-            Map<String, Object> result =
-                    teamcoreService.getFileSizeAndVersion(Long.valueOf(gitlabId), filePath);
-
-            Map<String, Object> ans = (Map<String, Object>) result.get("result");
-            if (ans != null) {
-                String size = (String) ans.get("size");
-                int version = (int) ans.get("version");
-                String commitId = (String) ans.get("commitId");
-                int index = size.indexOf(" ");
-                items.get(2).setValue(size.substring(index + 1));
-                items.get(3).setValue(size.substring(0, index));
-                items.get(30).setValue(String.valueOf(version));
-                items.get(32).setValue("http://webviewer.arcplus-99.com:3010/samples/viewing/viewing/index.html?" +
-                        "key=demo:601439739@qq.com:743d76bd0107bdda259b1ca19b0cb79456070bb2f0c4d57a89&" +
-                        "url=http://teamcore.arcplus-99.com/wopi/files/majorDetail/downloadOtherType?gitlabId=" +
-                        gitlabId + "&commitId=" + commitId + "&fileFullPath=" + filePath + "&branchName=design");
-
-            }
-            String[] split = filePath.split("\\.");
-            String fileType = split[split.length - 1];
-            items.get(4).setValue(fileType);
-            items.get(6).setValue(fileType + "创建程序");
-
-        }
+//        } else {
+//            Map<String, Object> result =
+//                    teamcoreService.getFileSizeAndVersion(Long.valueOf(gitlabId), filePath);
+//
+//            Map<String, Object> ans = (Map<String, Object>) result.get("result");
+//            if (ans != null) {
+//                String size = (String) ans.get("size");
+//                int version = (int) ans.get("version");
+//                String commitId = (String) ans.get("commitId");
+//                int index = size.indexOf(" ");
+//                items.get(2).setValue(size.substring(index + 1));
+//                items.get(3).setValue(size.substring(0, index));
+//                items.get(30).setValue(String.valueOf(version));
+//                items.get(32).setValue("http://webviewer.arcplus-99.com:3010/samples/viewing/viewing/index.html?" +
+//                        "key=demo:601439739@qq.com:743d76bd0107bdda259b1ca19b0cb79456070bb2f0c4d57a89&" +
+//                        "url=http://teamcore.arcplus-99.com/wopi/files/majorDetail/downloadOtherType?gitlabId=" +
+//                        gitlabId + "&commitId=" + commitId + "&fileFullPath=" + filePath + "&branchName=design");
+//
+//            }
+//            String[] split = filePath.split("\\.");
+//            String fileType = split[split.length - 1];
+//            items.get(4).setValue(fileType);
+//            items.get(6).setValue(fileType + "创建程序");
+//
+//        }
 
         items.get(0).setValue("文件级");
         items.get(1).setValue("电子");
@@ -126,7 +127,10 @@ public class FillMetaItemsUtil {
         items.get(22).setValue(subProjectDetail.getName());
         items.get(23).setValue(subProjectDetail.getStageName());
         items.get(24).setValue(majorDetail.getStageName());
-        items.get(25).setValue(dpsAllProjectV.getOuName());
+        if (dpsAllProjectV !=null){
+            items.get(25).setValue(dpsAllProjectV.getOuName());
+        }
+        items.get(25).setValue(null);
         items.get(26).setValue(projectApply.getConstructionDepartment());
         items.get(27).setValue(null);
         items.get(28).setValue(majorPlanning.getDwgNo());
