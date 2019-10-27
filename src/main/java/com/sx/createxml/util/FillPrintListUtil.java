@@ -70,9 +70,13 @@ public class FillPrintListUtil {
         //把数据填入print4XML,用于生成XML
         PrintWithItem printWithItem = new PrintWithItem();
         printWithItem.setPrintId(idInt);
+        MajorPlanning majorPlanning = majorPlanningRepository.getById(idL);
+
+
+        String printName = majorPlanning.getDwgNo() + "_" + majorPlanning.getDwgName();
+        printWithItem.setPrintName(printName);
 
         //从majorplaning拿到mysql三个表的id
-        MajorPlanning majorPlanning = majorPlanningRepository.getById(idL);
 
         Long subProjectId = majorPlanning.getSubProjectId();
         Long projectId = majorPlanning.getProjectId();

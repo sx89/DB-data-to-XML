@@ -15,12 +15,21 @@ public class PrintWithItem {
     private Integer printId;
     private List<MetaItem> items;
 
+    private String printName;
     private List<ActionMetaItem> actionMetaItems;
 
     private List<PdfAnnotation> pdfAnnotations;
 
     public PrintWithItem() {
 
+    }
+
+    public String getPrintName() {
+        return printName;
+    }
+
+    public void setPrintName(String printName) {
+        this.printName = printName;
     }
 
     public Integer getPrintId() {

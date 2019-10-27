@@ -138,7 +138,7 @@
 <method>自动</method>
 <range>/</range>
 <notation>设计阶段分类方案</notation>
-<value>6914</value>
+<value>6817</value>
 </metaItem>
 <metaItem>
 <name>专业编号</name>
@@ -152,7 +152,7 @@
 <method>自动</method>
 <range>/</range>
 <notation>项目策划方案</notation>
-<value>S</value>
+<value>A</value>
 </metaItem>
 <metaItem>
 <name>归档专业</name>
@@ -166,7 +166,7 @@
 <method>自动</method>
 <range>建筑、结构、机电</range>
 <notation>建筑、结构、机电</notation>
-<value>结构</value>
+<value>建筑</value>
 </metaItem>
 <metaItem>
 <name>文件分类</name>
@@ -236,7 +236,7 @@
 <method>自动</method>
 <range>/</range>
 <notation>null</notation>
-<value>S99拼装图纸/S-00-00-07_七层平面图.dwg</value>
+<value>A99拼装图纸/A-00-00-01_一层平面图.dwg</value>
 </metaItem>
 <metaItem>
 <name>文件是否必归</name>
@@ -292,7 +292,7 @@
 <method>自动</method>
 <range>/</range>
 <notation>工程编号规范</notation>
-<value>03109G0022</value>
+<value>03108E0046</value>
 </metaItem>
 <metaItem>
 <name>工程名称</name>
@@ -306,7 +306,7 @@
 <method>自动</method>
 <range>/</range>
 <notation>null</notation>
-<value>财务部印花税</value>
+<value>上海环保园一期精装修</value>
 </metaItem>
 <metaItem>
 <name>子项名称</name>
@@ -320,7 +320,7 @@
 <method>自动</method>
 <range>/</range>
 <notation>null</notation>
-<value>一期</value>
+<value>默认</value>
 </metaItem>
 <metaItem>
 <name>设计阶段</name>
@@ -376,7 +376,7 @@
 <method>自动</method>
 <range>/</range>
 <notation>null</notation>
-<value>null</value>
+<value>上海国际节能环保发展有限公司</value>
 </metaItem>
 <metaItem>
 <name>合作设计单位</name>
@@ -404,7 +404,7 @@
 <method>自动</method>
 <range>/</range>
 <notation>图纸命名方案</notation>
-<value>S-00-00-07</value>
+<value>A-00-00-01</value>
 </metaItem>
 <metaItem>
 <name>图纸名称</name>
@@ -418,7 +418,7 @@
 <method>自动</method>
 <range>/</range>
 <notation>图纸命名方案</notation>
-<value>七层平面图</value>
+<value>一层平面图</value>
 </metaItem>
 <metaItem>
 <name>版次</name>
@@ -446,7 +446,7 @@
 <method>自动</method>
 <range>/</range>
 <notation>null</notation>
-<value>结构</value>
+<value>建筑</value>
 </metaItem>
 <metaItem>
 <name>预览文件</name>
@@ -474,7 +474,7 @@
 <method>自动</method>
 <range>/</range>
 <notation>null</notation>
-<value>null</value>
+<value>A出图图纸/已签章/A-00-00-01_一层平面图.pdf</value>
 </metaItem>
 <metaItem>
 <name>图幅</name>
@@ -544,7 +544,7 @@
 <method>自动</method>
 <range>/</range>
 <notation>null</notation>
-<value>徐旻洋(18453),陈继辉(chenjh)</value>
+<value>徐旻洋(18453)</value>
 </metaItem>
 <metaItem>
 <name>审核人</name>
@@ -614,7 +614,7 @@
 <method>自动</method>
 <range>/</range>
 <notation>null</notation>
-<value>2019-10-01 00:00:00</value>
+<value>2019-10-17 00:00:00</value>
 </metaItem>
 <metaItem>
 <name>图纸方向</name>
@@ -678,7 +678,7 @@
 <duty>设计人</duty>
 <author>徐旻洋(18453)</author>
 <optIP>null</optIP>
-<createtime>2019-10-19 17:21:37.378</createtime>
+<createtime>2019-10-18 17:04:20.238</createtime>
 <optnumber>1</optnumber>
 <remark>同意</remark>
 </item>
@@ -687,7 +687,7 @@
 <duty>校对人</duty>
 <author>徐旻洋(18453)</author>
 <optIP>null</optIP>
-<createtime>2019-10-19 17:21:55.422</createtime>
+<createtime>2019-10-18 17:04:40.979</createtime>
 <optnumber>1</optnumber>
 <remark>同意</remark>
 </item>
@@ -696,7 +696,7 @@
 <duty>专业负责人</duty>
 <author>徐旻洋(18453)</author>
 <optIP>null</optIP>
-<createtime>2019-10-19 17:21:58.602</createtime>
+<createtime>2019-10-18 17:04:51.582</createtime>
 <optnumber>1</optnumber>
 <remark>同意</remark>
 </item>
@@ -705,7 +705,7 @@
 <duty>会签人</duty>
 <author>默认审批(defaultApproval)</author>
 <optIP>null</optIP>
-<createtime>2019-10-19 17:21:58.676</createtime>
+<createtime>2019-10-18 17:04:51.66</createtime>
 <optnumber>1</optnumber>
 <remark>同意</remark>
 </item>
@@ -714,7 +714,7 @@
 <duty>审核人</duty>
 <author>徐旻洋(18453)</author>
 <optIP>null</optIP>
-<createtime>2019-10-19 17:22:07.256</createtime>
+<createtime>2019-10-18 17:04:58.005</createtime>
 <optnumber>1</optnumber>
 <remark>同意</remark>
 </item>
@@ -723,7 +723,7 @@
 <duty>审定人</duty>
 <author>徐旻洋(18453)</author>
 <optIP>null</optIP>
-<createtime>2019-10-19 17:22:12.385</createtime>
+<createtime>2019-10-18 17:05:03.117</createtime>
 <optnumber>1</optnumber>
 <remark>同意</remark>
 </item>
@@ -732,7 +732,7 @@
 <duty>设总</duty>
 <author>徐旻洋(18453)</author>
 <optIP>null</optIP>
-<createtime>2019-10-19 17:22:16.004</createtime>
+<createtime>2019-10-18 17:05:07.386</createtime>
 <optnumber>1</optnumber>
 <remark>同意</remark>
 </item>
@@ -741,25 +741,25 @@
 <duty>项目经理人</duty>
 <author>徐旻洋(18453)</author>
 <optIP>null</optIP>
-<createtime>2019-10-19 17:22:18.456</createtime>
+<createtime>2019-10-18 17:05:11.983</createtime>
 <optnumber>1</optnumber>
 <remark>同意</remark>
 </item>
 <item>
 <opttype>档案审批人</opttype>
 <duty>档案审批人</duty>
-<author>徐旻洋(18453)</author>
+<author>默认审批(defaultApproval)</author>
 <optIP>null</optIP>
-<createtime>2019-10-19 17:22:20.903</createtime>
+<createtime>2019-10-18 17:05:12.054</createtime>
 <optnumber>1</optnumber>
 <remark>同意</remark>
 </item>
 <item>
 <opttype>图纸审批申请_创建人</opttype>
 <duty>图纸审批申请_创建人</duty>
-<author>秦鑫(15882)</author>
+<author>徐旻洋(18453)</author>
 <optIP>null</optIP>
-<createtime>2019-10-19 17:20:05.81</createtime>
+<createtime>2019-10-18 17:03:15.73</createtime>
 <optnumber>1</optnumber>
 <remark>同意</remark>
 </item>

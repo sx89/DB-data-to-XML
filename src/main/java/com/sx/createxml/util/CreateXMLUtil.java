@@ -331,14 +331,32 @@ public class CreateXMLUtil {
                     destFolerPath = "xmls/";
                 }
                 //创建路径不要用中文
-                String createPath = destFolerPath + printWithItem.getPrintId() + ".xml";
-
-                File dest = new File(createPath);
+                String createPathNative = destFolerPath + printWithItem.getPrintName() + ".xml";
                 // 使用Transformer的transform()方法将DOM树转换成XML
-                tf.transform(new DOMSource(document), new StreamResult(dest));
+                DOMSource xmlSource = new DOMSource(document);
+
+                //检查名字中的# 并替换@!@
+                //TODO 加工createPath
+
+                if (createPathNative.contains("#")) {
+                    String createPathModified = createPathNative.replaceAll("#", "@!@");
+                    File dest = new File(createPathModified);
+                    //如果dest中有#会在StreamResult截断
+                    StreamResult outputTarget = new StreamResult(dest);
+
+                    tf.transform(xmlSource, outputTarget);
+
+                    //把生成的文件的@!@变回#
+                    RenameFIleUtil.renameFile(createPathModified, createPathNative);
+                } else {
+                    File dest = new File(createPathNative);
+                    //如果dest中有#会在StreamResult截断
+                    StreamResult outputTarget = new StreamResult(dest);
+                    tf.transform(xmlSource, outputTarget);
+                }
 
                 CreateXMLResult createXMLResult = new CreateXMLResult();
-                createXMLResult.setCreatePath(createPath);
+                createXMLResult.setCreatePath(createPathNative);
 
                 createXMLResult.setPrintId(printWithItem.getPrintId());
                 listResult.add(createXMLResult);
