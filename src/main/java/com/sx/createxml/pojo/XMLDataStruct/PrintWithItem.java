@@ -13,6 +13,9 @@ public class PrintWithItem {
 
 
     private Integer printId;
+
+    private String printName;
+
     private List<MetaItem> items;
 
     private String printName;
@@ -38,6 +41,14 @@ public class PrintWithItem {
 
     public void setPrintId(Integer printId) {
         this.printId = printId;
+    }
+
+    public String getPrintName() {
+        return printName;
+    }
+
+    public void setPrintName(String printName) {
+        this.printName = printName;
     }
 
     public List<MetaItem> getItems() {

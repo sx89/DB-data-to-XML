@@ -78,6 +78,14 @@ public class FillPrintListUtil {
 
         //从majorplaning拿到mysql三个表的id
 
+        String name = majorPlanning.getDwgNo() + "_" + majorPlanning.getDwgName();
+        int index = name.indexOf("#");
+        if(index > -1) {
+            name = name.replace("#","号");
+        }
+
+        printWithItem.setPrintName(name);
+
         Long subProjectId = majorPlanning.getSubProjectId();
         Long projectId = majorPlanning.getProjectId();
         Long majorId = majorPlanning.getMajorId();

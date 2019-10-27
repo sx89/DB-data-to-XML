@@ -10,6 +10,8 @@ public interface DpsAllProjectVRepository extends JpaRepository<DpsAllProjectV,I
 
     DpsAllProjectV findByProjectId(Integer projectId);
 
+    DpsAllProjectV findBySegment1(String segment1);
+
 //    @Query("SELECT '*' from DpsAllProjectV WHERE segment1 like '%?1%'")
     List<DpsAllProjectV> findBySegment1StartingWith(String segment1);
 }
